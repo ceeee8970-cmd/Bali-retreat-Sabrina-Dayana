@@ -1,0 +1,1301 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Bali — A Sabriyoga Experience</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,300;1,9..144,400&family=Inter+Tight:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ivory: #faf6ef;
+    --cream: #f1ead9;
+    --sand: #e7dcc4;
+    --bone: #ebe3d0;
+    --moss: #4f6248;
+    --sage: #8a9a7b;
+    --sage-soft: #b9c2a8;
+    --olive: #3d4a35;
+    --ink: #2b2a25;
+    --ink-soft: #5a584f;
+    --gold: #b08a4a;
+    --line: #d8cdb3;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--ivory);
+    color: var(--ink);
+    font-family: 'Inter Tight', sans-serif;
+    font-weight: 400;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
+
+  ::selection { background: var(--moss); color: var(--ivory); }
+
+  /* ============ TYPOGRAPHY ============ */
+  .display {
+    font-family: 'Fraunces', serif;
+    font-weight: 300;
+    letter-spacing: -0.02em;
+    line-height: 1.05;
+  }
+  .italic { font-style: italic; font-weight: 300; }
+
+  .eyebrow {
+    font-family: 'Inter Tight', sans-serif;
+    font-size: 0.72rem;
+    font-weight: 500;
+    letter-spacing: 0.32em;
+    text-transform: uppercase;
+    color: var(--moss);
+  }
+
+  /* ============ NAVIGATION ============ */
+  nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+    padding: 1.4rem 3rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    backdrop-filter: blur(14px);
+    background: rgba(250, 246, 239, 0.78);
+    border-bottom: 1px solid rgba(216, 205, 179, 0.4);
+    transition: padding 0.4s ease;
+  }
+  nav .logo {
+    font-family: 'Fraunces', serif;
+    font-size: 1.35rem;
+    font-weight: 400;
+    letter-spacing: -0.01em;
+    color: var(--ink);
+  }
+  nav .logo em { font-style: italic; color: var(--moss); }
+  nav ul {
+    display: flex;
+    gap: 2.5rem;
+    list-style: none;
+  }
+  nav ul a {
+    color: var(--ink-soft);
+    text-decoration: none;
+    font-size: 0.85rem;
+    letter-spacing: 0.02em;
+    transition: color 0.3s;
+  }
+  nav ul a:hover { color: var(--moss); }
+  nav .reserve {
+    background: var(--moss);
+    color: var(--ivory);
+    padding: 0.7rem 1.6rem;
+    border-radius: 999px;
+    font-size: 0.82rem;
+    text-decoration: none;
+    letter-spacing: 0.04em;
+    transition: background 0.3s, transform 0.3s;
+  }
+  nav .reserve:hover { background: var(--olive); transform: translateY(-1px); }
+
+  @media (max-width: 880px) {
+    nav { padding: 1rem 1.5rem; }
+    nav ul { display: none; }
+  }
+
+  /* ============ HERO ============ */
+  .hero {
+    min-height: 100vh;
+    padding: 9rem 3rem 4rem;
+    display: grid;
+    grid-template-columns: 1.1fr 0.9fr;
+    gap: 4rem;
+    align-items: center;
+    position: relative;
+    background:
+      radial-gradient(ellipse at top right, rgba(138, 154, 123, 0.18), transparent 55%),
+      radial-gradient(ellipse at bottom left, rgba(231, 220, 196, 0.55), transparent 60%),
+      var(--ivory);
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image:
+      radial-gradient(circle at 1px 1px, rgba(79, 98, 72, 0.08) 1px, transparent 0);
+    background-size: 28px 28px;
+    pointer-events: none;
+    mask: linear-gradient(180deg, transparent, black 40%, black 60%, transparent);
+  }
+  .hero-text { position: relative; z-index: 2; }
+  .hero-text .eyebrow { display: block; margin-bottom: 1.6rem; }
+  .hero h1 {
+    font-size: clamp(2.8rem, 6.5vw, 5.5rem);
+    margin-bottom: 1.8rem;
+  }
+  .hero h1 .leaf { color: var(--moss); }
+  .hero p.lead {
+    font-size: 1.05rem;
+    color: var(--ink-soft);
+    max-width: 460px;
+    margin-bottom: 2.4rem;
+    line-height: 1.7;
+  }
+  .hero-meta {
+    display: flex;
+    gap: 2.2rem;
+    margin-bottom: 2.8rem;
+    flex-wrap: wrap;
+  }
+  .hero-meta div {
+    border-left: 1px solid var(--line);
+    padding-left: 1.1rem;
+  }
+  .hero-meta strong {
+    display: block;
+    font-family: 'Fraunces', serif;
+    font-weight: 400;
+    font-size: 1.15rem;
+    color: var(--ink);
+    margin-bottom: 0.15rem;
+  }
+  .hero-meta span {
+    font-size: 0.75rem;
+    color: var(--ink-soft);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+  .hero-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.8rem;
+    background: var(--ink);
+    color: var(--ivory);
+    padding: 1.1rem 2rem;
+    border-radius: 999px;
+    text-decoration: none;
+    font-size: 0.92rem;
+    letter-spacing: 0.04em;
+    transition: background 0.3s, transform 0.3s;
+  }
+  .hero-cta:hover { background: var(--moss); transform: translateY(-2px); }
+  .hero-cta .arrow { transition: transform 0.3s; }
+  .hero-cta:hover .arrow { transform: translateX(4px); }
+
+  /* Hero collage */
+  .hero-art {
+    position: relative;
+    height: 70vh;
+    min-height: 540px;
+  }
+  .photo {
+    position: absolute;
+    border-radius: 4px;
+    background-size: cover;
+    background-position: center;
+    box-shadow: 0 24px 60px -20px rgba(43, 42, 37, 0.25);
+    overflow: hidden;
+  }
+  .photo-1 {
+    top: 0; right: 8%;
+    width: 58%;
+    aspect-ratio: 3/4;
+    background-image: url('https://images.unsplash.com/photo-1518002171953-a080ee817e1f?w=900&q=80');
+    border-radius: 200px 200px 4px 4px;
+  }
+  .photo-2 {
+    bottom: 6%; left: 0;
+    width: 50%;
+    aspect-ratio: 4/3;
+    background-image: url('https://images.unsplash.com/photo-1604999565976-8913ad2ddb7c?w=800&q=80');
+  }
+  .photo-3 {
+    bottom: 18%; right: 0;
+    width: 36%;
+    aspect-ratio: 1/1;
+    background-image: url('https://images.unsplash.com/photo-1545579133-99bb5ab189bd?w=600&q=80');
+    border-radius: 50%;
+  }
+
+  .floating-label {
+    position: absolute;
+    background: var(--ivory);
+    border: 1px solid var(--line);
+    padding: 0.7rem 1.1rem;
+    border-radius: 999px;
+    font-size: 0.78rem;
+    color: var(--ink);
+    box-shadow: 0 12px 30px -8px rgba(43, 42, 37, 0.15);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  .floating-label::before {
+    content: '';
+    width: 6px;
+    height: 6px;
+    background: var(--moss);
+    border-radius: 50%;
+  }
+  .floating-label.fl-1 { top: 38%; left: -2%; }
+  .floating-label.fl-2 { bottom: 0; right: 18%; }
+
+  @media (max-width: 980px) {
+    .hero { grid-template-columns: 1fr; padding: 8rem 1.5rem 3rem; }
+    .hero-art { height: 60vh; min-height: 420px; }
+  }
+
+  /* ============ MARQUEE ============ */
+  .marquee {
+    border-top: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+    padding: 1.6rem 0;
+    overflow: hidden;
+    background: var(--cream);
+  }
+  .marquee-inner {
+    display: flex;
+    gap: 4rem;
+    white-space: nowrap;
+    animation: scroll 38s linear infinite;
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-weight: 300;
+    font-size: 1.4rem;
+    color: var(--olive);
+  }
+  .marquee-inner span { display: inline-flex; align-items: center; gap: 4rem; }
+  .marquee-inner .dot {
+    width: 6px; height: 6px;
+    background: var(--gold);
+    border-radius: 50%;
+  }
+  @keyframes scroll {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
+  }
+
+  /* ============ SECTION SHELL ============ */
+  section {
+    padding: 7rem 3rem;
+    position: relative;
+  }
+  .container { max-width: 1240px; margin: 0 auto; }
+  .section-head {
+    display: grid;
+    grid-template-columns: 0.4fr 1fr;
+    gap: 3rem;
+    margin-bottom: 4rem;
+    align-items: end;
+  }
+  .section-head h2 {
+    font-size: clamp(2.2rem, 4.5vw, 3.6rem);
+  }
+  .section-head h2 em { color: var(--moss); }
+  .section-head p {
+    color: var(--ink-soft);
+    max-width: 520px;
+    font-size: 1.02rem;
+  }
+  @media (max-width: 760px) {
+    section { padding: 5rem 1.5rem; }
+    .section-head { grid-template-columns: 1fr; gap: 1.2rem; margin-bottom: 2.5rem; }
+  }
+
+  /* ============ ABOUT / OVERVIEW ============ */
+  .about { background: var(--ivory); }
+  .about-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+    margin-top: 1.5rem;
+  }
+  .feature-card {
+    background: white;
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    padding: 2rem 1.8rem;
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+    position: relative;
+    overflow: hidden;
+  }
+  .feature-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, var(--moss), var(--sage-soft), transparent);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.5s ease;
+  }
+  .feature-card:hover { transform: translateY(-4px); box-shadow: 0 18px 40px -20px rgba(79, 98, 72, 0.25); }
+  .feature-card:hover::before { transform: scaleX(1); }
+  .feature-card .icon {
+    width: 44px; height: 44px;
+    background: var(--cream);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1.2rem;
+    color: var(--moss);
+  }
+  .feature-card h3 {
+    font-family: 'Fraunces', serif;
+    font-weight: 400;
+    font-size: 1.3rem;
+    margin-bottom: 0.6rem;
+    color: var(--ink);
+  }
+  .feature-card p {
+    color: var(--ink-soft);
+    font-size: 0.92rem;
+    line-height: 1.65;
+  }
+  @media (max-width: 880px) { .about-grid { grid-template-columns: 1fr; } }
+
+  /* ============ ITINERARY ============ */
+  .itinerary {
+    background: var(--cream);
+    background-image:
+      radial-gradient(ellipse at top, rgba(138, 154, 123, 0.15), transparent 50%);
+  }
+  .day {
+    display: grid;
+    grid-template-columns: 0.32fr 1fr 0.5fr;
+    gap: 3rem;
+    padding: 3rem 0;
+    border-bottom: 1px solid var(--line);
+    align-items: start;
+  }
+  .day:last-child { border-bottom: none; }
+  .day-num {
+    font-family: 'Fraunces', serif;
+    font-weight: 300;
+  }
+  .day-num .label {
+    display: block;
+    font-family: 'Inter Tight', sans-serif;
+    font-size: 0.7rem;
+    letter-spacing: 0.32em;
+    text-transform: uppercase;
+    color: var(--moss);
+    margin-bottom: 0.5rem;
+  }
+  .day-num .num {
+    font-size: 4.5rem;
+    line-height: 0.9;
+    color: var(--olive);
+  }
+  .day-num .num em {
+    font-style: italic;
+    color: var(--gold);
+    font-size: 2rem;
+    vertical-align: top;
+    margin-left: 0.3rem;
+  }
+  .day-body h3 {
+    font-family: 'Fraunces', serif;
+    font-weight: 400;
+    font-size: 1.65rem;
+    margin-bottom: 1rem;
+    color: var(--ink);
+    letter-spacing: -0.01em;
+  }
+  .day-body p {
+    color: var(--ink-soft);
+    margin-bottom: 0.9rem;
+    font-size: 0.96rem;
+  }
+  .day-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-top: 1.2rem;
+  }
+  .tag {
+    font-size: 0.72rem;
+    background: var(--ivory);
+    border: 1px solid var(--sage-soft);
+    color: var(--moss);
+    padding: 0.4rem 0.85rem;
+    border-radius: 999px;
+    letter-spacing: 0.04em;
+  }
+  .day-image {
+    aspect-ratio: 3/4;
+    border-radius: 4px;
+    background-size: cover;
+    background-position: center;
+    box-shadow: 0 18px 36px -16px rgba(43, 42, 37, 0.3);
+  }
+  .day-image.round { border-radius: 200px 200px 4px 4px; }
+
+  @media (max-width: 980px) {
+    .day { grid-template-columns: 1fr; gap: 1.5rem; }
+    .day-num .num { font-size: 3.2rem; }
+    .day-image { aspect-ratio: 4/3; max-width: 100%; }
+  }
+
+  /* ============ INCLUSIONS ============ */
+  .inclusions { background: var(--ivory); }
+  .inc-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2.5rem;
+    background: white;
+    border: 1px solid var(--line);
+    border-radius: 18px;
+    padding: 3rem;
+  }
+  .inc-col h4 {
+    font-family: 'Fraunces', serif;
+    font-weight: 400;
+    font-size: 1.5rem;
+    margin-bottom: 1.4rem;
+    display: flex;
+    align-items: center;
+    gap: 0.7rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid var(--line);
+  }
+  .inc-col h4 svg { color: var(--moss); }
+  .inc-col.exc h4 { color: var(--ink-soft); }
+  .inc-col.exc h4 svg { color: var(--ink-soft); }
+  .inc-col ul { list-style: none; }
+  .inc-col li {
+    padding: 0.7rem 0;
+    color: var(--ink-soft);
+    font-size: 0.96rem;
+    display: flex;
+    gap: 0.8rem;
+    align-items: flex-start;
+  }
+  .inc-col li::before {
+    content: '';
+    width: 6px; height: 6px;
+    background: var(--moss);
+    border-radius: 50%;
+    flex-shrink: 0;
+    margin-top: 0.55rem;
+  }
+  .inc-col.exc li::before { background: var(--sand); }
+  @media (max-width: 760px) {
+    .inc-grid { grid-template-columns: 1fr; padding: 2rem 1.5rem; gap: 2rem; }
+  }
+
+  /* ============ HOST ============ */
+  .host {
+    background: var(--ivory);
+    background-image:
+      radial-gradient(ellipse at center right, rgba(138, 154, 123, 0.15), transparent 55%);
+  }
+  .host-grid {
+    display: grid;
+    grid-template-columns: 0.85fr 1.15fr;
+    gap: 4rem;
+    align-items: center;
+  }
+  .host-img {
+    aspect-ratio: 4/5;
+    background: url('https://images.unsplash.com/photo-1545389336-cf090694435e?w=800&q=80') center/cover;
+    border-radius: 6px;
+    box-shadow: 0 30px 60px -25px rgba(43, 42, 37, 0.35);
+    position: relative;
+  }
+  .host-img::after {
+    content: 'Dayana Solano';
+    position: absolute;
+    bottom: -1.4rem;
+    left: -1.4rem;
+    background: var(--moss);
+    color: var(--ivory);
+    padding: 0.7rem 1.4rem;
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-weight: 300;
+    font-size: 1.1rem;
+    border-radius: 4px;
+  }
+  .host-text h2 {
+    font-size: clamp(2rem, 4vw, 3.2rem);
+    margin-bottom: 1.5rem;
+  }
+  .host-text h2 em { color: var(--moss); }
+  .host-text p {
+    color: var(--ink-soft);
+    font-size: 1.02rem;
+    margin-bottom: 1.2rem;
+    line-height: 1.75;
+  }
+  .host-stats {
+    display: flex;
+    gap: 2rem;
+    margin-top: 2rem;
+    padding-top: 2rem;
+    border-top: 1px solid var(--line);
+  }
+  .host-stats div strong {
+    display: block;
+    font-family: 'Fraunces', serif;
+    font-size: 1.6rem;
+    color: var(--moss);
+  }
+  .host-stats div span {
+    font-size: 0.78rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+  }
+  @media (max-width: 880px) { .host-grid { grid-template-columns: 1fr; gap: 3rem; } }
+
+  /* ============ TESTIMONIALS ============ */
+  .testimonials {
+    background: var(--moss);
+    color: var(--ivory);
+    position: relative;
+  }
+  .testimonials::before {
+    content: '“';
+    position: absolute;
+    top: 1rem; left: 3rem;
+    font-family: 'Fraunces', serif;
+    font-size: 18rem;
+    color: rgba(250, 246, 239, 0.08);
+    line-height: 1;
+    pointer-events: none;
+  }
+  .testimonials .section-head h2 { color: var(--ivory); }
+  .testimonials .section-head h2 em { color: var(--sand); }
+  .testimonials .section-head p { color: rgba(250, 246, 239, 0.75); }
+  .testimonials .eyebrow { color: var(--sand); }
+  .test-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.6rem;
+  }
+  .test-card {
+    background: rgba(250, 246, 239, 0.08);
+    backdrop-filter: blur(6px);
+    border: 1px solid rgba(250, 246, 239, 0.15);
+    padding: 2rem;
+    border-radius: 12px;
+    display: flex;
+    flex-direction: column;
+  }
+  .test-card .stars { color: var(--sand); margin-bottom: 1rem; letter-spacing: 0.2em; }
+  .test-card p {
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-weight: 300;
+    font-size: 1.02rem;
+    line-height: 1.65;
+    color: rgba(250, 246, 239, 0.92);
+    margin-bottom: 1.5rem;
+    flex-grow: 1;
+  }
+  .test-card .author {
+    border-top: 1px solid rgba(250, 246, 239, 0.2);
+    padding-top: 1rem;
+    font-size: 0.85rem;
+    color: var(--sand);
+    letter-spacing: 0.04em;
+  }
+  .test-card .author strong { display: block; font-weight: 500; color: var(--ivory); margin-bottom: 0.2rem; font-family: 'Inter Tight'; font-style: normal; }
+  @media (max-width: 980px) { .test-grid { grid-template-columns: 1fr; } }
+
+  /* ============ FAQ ============ */
+  .faq { background: var(--cream); }
+  .faq-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.6rem 2rem;
+  }
+  details {
+    border-bottom: 1px solid var(--line);
+    padding: 1.4rem 0;
+    cursor: pointer;
+  }
+  details summary {
+    font-family: 'Fraunces', serif;
+    font-weight: 400;
+    font-size: 1.1rem;
+    color: var(--ink);
+    list-style: none;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+    transition: color 0.3s;
+  }
+  details summary::-webkit-details-marker { display: none; }
+  details summary::after {
+    content: '+';
+    font-family: 'Fraunces', serif;
+    font-size: 1.6rem;
+    color: var(--moss);
+    transition: transform 0.3s;
+    flex-shrink: 0;
+  }
+  details[open] summary::after { content: '−'; }
+  details[open] summary { color: var(--moss); }
+  details p {
+    color: var(--ink-soft);
+    margin-top: 1rem;
+    font-size: 0.93rem;
+    line-height: 1.7;
+    padding-right: 2rem;
+  }
+  @media (max-width: 880px) { .faq-grid { grid-template-columns: 1fr; } }
+
+  /* ============ POLICIES ============ */
+  .policies { background: var(--ivory); }
+  .policy-card {
+    background: white;
+    border: 1px solid var(--line);
+    border-radius: 18px;
+    padding: 3rem;
+  }
+  .policy-card h3 {
+    font-family: 'Fraunces', serif;
+    font-weight: 400;
+    font-size: 1.5rem;
+    margin-bottom: 1.5rem;
+    color: var(--ink);
+  }
+  .cancel-table {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.8rem;
+    margin-bottom: 2rem;
+  }
+  .cancel-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.9rem 1.2rem;
+    background: var(--ivory);
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    font-size: 0.9rem;
+  }
+  .cancel-row span:first-child { color: var(--ink-soft); }
+  .cancel-row span:last-child {
+    font-family: 'Fraunces', serif;
+    color: var(--moss);
+    font-weight: 500;
+  }
+  .policy-note {
+    font-size: 0.88rem;
+    color: var(--ink-soft);
+    line-height: 1.7;
+    padding: 1rem 0;
+    border-top: 1px dashed var(--line);
+  }
+  @media (max-width: 760px) {
+    .cancel-table { grid-template-columns: 1fr; }
+    .policy-card { padding: 2rem 1.5rem; }
+  }
+
+  /* ============ FINAL CTA ============ */
+  .final-cta {
+    padding: 8rem 3rem;
+    background:
+      linear-gradient(rgba(43, 42, 37, 0.55), rgba(43, 42, 37, 0.6)),
+      url('https://images.unsplash.com/photo-1537996194471-e657df975ab4?w=1800&q=80') center/cover;
+    color: var(--ivory);
+    text-align: center;
+  }
+  .final-cta .eyebrow { color: var(--sand); display: inline-block; margin-bottom: 1.6rem; }
+  .final-cta h2 {
+    font-family: 'Fraunces', serif;
+    font-weight: 300;
+    font-size: clamp(2.5rem, 5.5vw, 4.5rem);
+    line-height: 1.05;
+    letter-spacing: -0.02em;
+    margin-bottom: 1.6rem;
+  }
+  .final-cta h2 em { font-style: italic; color: var(--sand); }
+  .final-cta p {
+    max-width: 540px;
+    margin: 0 auto 2.5rem;
+    color: rgba(250, 246, 239, 0.85);
+    font-size: 1.02rem;
+  }
+  .final-cta a.btn {
+    display: inline-flex;
+    gap: 0.7rem;
+    align-items: center;
+    background: var(--ivory);
+    color: var(--ink);
+    padding: 1.15rem 2.4rem;
+    border-radius: 999px;
+    text-decoration: none;
+    font-size: 0.92rem;
+    letter-spacing: 0.04em;
+    transition: transform 0.3s, background 0.3s;
+  }
+  .final-cta a.btn:hover { background: var(--sand); transform: translateY(-2px); }
+  .deposit-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-top: 1.6rem;
+    padding: 0.5rem 1rem;
+    border: 1px solid rgba(250, 246, 239, 0.3);
+    border-radius: 999px;
+    font-size: 0.78rem;
+    letter-spacing: 0.06em;
+    color: rgba(250, 246, 239, 0.85);
+  }
+
+  /* ============ FOOTER ============ */
+  footer {
+    background: var(--ink);
+    color: rgba(250, 246, 239, 0.65);
+    padding: 4rem 3rem 2rem;
+  }
+  .footer-grid {
+    max-width: 1240px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1.5fr 1fr 1fr;
+    gap: 3rem;
+    padding-bottom: 3rem;
+    border-bottom: 1px solid rgba(250, 246, 239, 0.1);
+  }
+  footer h5 {
+    font-family: 'Fraunces', serif;
+    font-weight: 400;
+    color: var(--ivory);
+    margin-bottom: 1rem;
+    font-size: 1.05rem;
+  }
+  footer p { font-size: 0.9rem; max-width: 320px; line-height: 1.7; }
+  footer ul { list-style: none; display: flex; flex-direction: column; gap: 0.6rem; }
+  footer ul a { color: rgba(250, 246, 239, 0.65); text-decoration: none; font-size: 0.9rem; transition: color 0.3s; }
+  footer ul a:hover { color: var(--sand); }
+  .footer-bottom {
+    max-width: 1240px;
+    margin: 2rem auto 0;
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.78rem;
+    color: rgba(250, 246, 239, 0.45);
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+  @media (max-width: 760px) { .footer-grid { grid-template-columns: 1fr; } }
+
+  /* ============ ENTRANCE ANIMATIONS ============ */
+  /* Progressive enhancement: content is visible by default.
+     Animations only kick in if JS adds .js-enabled to <html>. */
+  .reveal {
+    opacity: 1;
+    transform: none;
+    transition: opacity 0.9s ease, transform 0.9s ease;
+  }
+  html.js-enabled .reveal {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  html.js-enabled .reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  /* Respect reduced-motion preference */
+  @media (prefers-reduced-motion: reduce) {
+    html.js-enabled .reveal {
+      opacity: 1 !important;
+      transform: none !important;
+      transition: none !important;
+    }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="logo">sabri<em>yoga</em></div>
+  <ul>
+    <li><a href="#about">Experience</a></li>
+    <li><a href="#itinerary">Itinerary</a></li>
+    <li><a href="#host">Your Host</a></li>
+    <li><a href="#faq">FAQ</a></li>
+  </ul>
+  <a href="#reserve" class="reserve">Reserve a Spot</a>
+</nav>
+
+<!-- ============ HERO ============ -->
+<section class="hero">
+  <div class="hero-text">
+    <span class="eyebrow">Sabriyoga Experience · Bali, Indonesia</span>
+    <h1 class="display">A return to <span class="leaf">stillness</span><br /><span class="italic">amid jungle &amp; rice.</span></h1>
+    <p class="lead">Six days of refined wellness, sacred ritual and cultural immersion at the 5-star Kastara Resort & Spa, Ubud. A small, intentional gathering for those who seek beauty, depth, and quiet luxury.</p>
+
+    <div class="hero-meta">
+      <div><strong>6 days</strong><span>5 nights</span></div>
+      <div><strong>12 spots</strong><span>Intimate group</span></div>
+      <div><strong>Ubud</strong><span>Bali, Indonesia</span></div>
+    </div>
+
+    <a href="#reserve" class="hero-cta">Reserve Your Place <span class="arrow">→</span></a>
+  </div>
+
+  <div class="hero-art">
+    <div class="photo photo-1"></div>
+    <div class="photo photo-2"></div>
+    <div class="photo photo-3"></div>
+    <div class="floating-label fl-1">Guided by Dayana Solano</div>
+    <div class="floating-label fl-2">5★ Kastara Resort &amp; Spa</div>
+  </div>
+</section>
+
+<!-- ============ MARQUEE ============ -->
+<div class="marquee">
+  <div class="marquee-inner">
+    <span>Yoga &amp; Breath <span class="dot"></span></span>
+    <span>Sacred Water Rituals <span class="dot"></span></span>
+    <span>Rice Terraces &amp; Waterfalls <span class="dot"></span></span>
+    <span>Balinese Massage <span class="dot"></span></span>
+    <span>Flower Ceremonies <span class="dot"></span></span>
+    <span>Legong Dance <span class="dot"></span></span>
+    <span>Yoga &amp; Breath <span class="dot"></span></span>
+    <span>Sacred Water Rituals <span class="dot"></span></span>
+    <span>Rice Terraces &amp; Waterfalls <span class="dot"></span></span>
+    <span>Balinese Massage <span class="dot"></span></span>
+    <span>Flower Ceremonies <span class="dot"></span></span>
+    <span>Legong Dance <span class="dot"></span></span>
+  </div>
+</div>
+
+<!-- ============ ABOUT ============ -->
+<section class="about" id="about">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow">The Experience</span>
+      <div>
+        <h2 class="display">Quiet luxury, woven with <em>devotion.</em></h2>
+        <p>Five nights in a 5-star sanctuary perched on a jungle cliff, with an infinity pool over the rice terraces. Curated tours, sacred rituals, and gentle daily practice — designed to ease the body and open the heart.</p>
+      </div>
+    </div>
+
+    <div class="about-grid">
+      <div class="feature-card reveal">
+        <div class="icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 2L4 12h6v8h4v-8h6L12 2z"/></svg>
+        </div>
+        <h3>Refined sanctuary</h3>
+        <p>Five nights at The Kastara Resort & Spa, Ubud — daily breakfast, infinity pool over the jungle, private driver, and seamless airport transfers.</p>
+      </div>
+      <div class="feature-card reveal">
+        <div class="icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M5 5l2 2M17 17l2 2M5 19l2-2M17 7l2-2"/></svg>
+        </div>
+        <h3>Soulful immersion</h3>
+        <p>Flower opening &amp; closing ceremonies, Canang Sari offerings, Melukat purification, traditional Legong dance, and quiet meditation in nature.</p>
+      </div>
+      <div class="feature-card reveal">
+        <div class="icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 12c3-6 9-6 12 0M3 12c3 6 9 6 12 0M15 12c3-6 9-6 9 0M15 12c3 6 9 6 9 0"/></svg>
+        </div>
+        <h3>Nature &amp; renewal</h3>
+        <p>Tegallalang rice terraces, hidden waterfalls, the iconic Bali Swing, a flying-dress photoshoot, and a 60-minute Balinese massage.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ ITINERARY ============ -->
+<section class="itinerary" id="itinerary">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow">Day by Day</span>
+      <div>
+        <h2 class="display">A journey through <em>jungle, water</em> and stillness.</h2>
+        <p>Each day is gently choreographed — woven between practice, ceremony, exploration and meaningful rest.</p>
+      </div>
+    </div>
+
+    <div class="day reveal">
+      <div class="day-num"><span class="label">Day One</span><span class="num">01</span></div>
+      <div class="day-body">
+        <h3>Arrival, Relaxation &amp; Welcome Yoga</h3>
+        <p>Arrive at Ngurah Rai International Airport and be privately transferred to The Kastara Resort &amp; Spa, perched amidst lush greenery and serene rice terraces.</p>
+        <p>Settle into your tranquil surroundings, then ease into the journey with a gentle yoga session guided by Dayana Solano. As evening falls, an intimate welcome dinner in a stunning natural setting begins your time together.</p>
+        <div class="day-tags">
+          <span class="tag">Private transfer</span>
+          <span class="tag">Welcome yoga</span>
+          <span class="tag">Welcome dinner</span>
+        </div>
+      </div>
+      <div class="day-image" style="background-image: url('https://images.unsplash.com/photo-1539367628448-4bc5c9d171c8?w=600&q=80');"></div>
+    </div>
+
+    <div class="day reveal">
+      <div class="day-num"><span class="label">Day Two</span><span class="num">02</span></div>
+      <div class="day-body">
+        <h3>Flower Opening Ceremony &amp; Ubud Culture</h3>
+        <p>Morning yoga and a curated breakfast open a day devoted to Bali's cultural heart. Take part in a graceful flower opening ceremony, then learn the delicate art of weaving Canang Sari — the island's daily offering of gratitude and devotion.</p>
+        <p>Afternoon leisure along Jalan Goutama for artisanal souvenirs, and at dusk, an enchanting Legong dance performance at the Ubud Water Palace — Balinese artistry at its most luminous.</p>
+        <div class="day-tags">
+          <span class="tag">Flower ceremony</span>
+          <span class="tag">Canang Sari</span>
+          <span class="tag">Legong dance</span>
+        </div>
+      </div>
+      <div class="day-image round" style="background-image: url('https://images.unsplash.com/photo-1604881744660-a45b1ddff3a8?w=600&q=80');"></div>
+    </div>
+
+    <div class="day reveal">
+      <div class="day-num"><span class="label">Day Three</span><span class="num">03</span></div>
+      <div class="day-body">
+        <h3>Yoga &amp; The Art of Water Healing</h3>
+        <p>A revitalizing morning practice followed by an indulgent floating breakfast. The day unfolds as a healing journey through Bali's sacred waters: a traditional Melukat purification, learning the spiritual essence of Tridatu — to receive, release, and preserve energy.</p>
+        <p>Continue to the enchanting Uma Anyar Waterfall for guided meditation, with a possible visit to Poh Gading, a secluded hidden gem. Afternoon: a 60-minute Balinese massage at the elegant Green Tara Spa, followed by an elevated group dinner.</p>
+        <div class="day-tags">
+          <span class="tag">Floating breakfast</span>
+          <span class="tag">Melukat ritual</span>
+          <span class="tag">Waterfall meditation</span>
+          <span class="tag">Balinese massage</span>
+        </div>
+      </div>
+      <div class="day-image" style="background-image: url('https://images.unsplash.com/photo-1518002171953-a080ee817e1f?w=600&q=80');"></div>
+    </div>
+
+    <div class="day reveal">
+      <div class="day-num"><span class="label">Day Four</span><span class="num">04</span></div>
+      <div class="day-body">
+        <h3>Leisure &amp; Optional East Bali Discovery</h3>
+        <p>A nourishing breakfast then a day at leisure — or join an optional curated journey through East Bali. Begin at Lempuyang Temple, home to the iconic Gates of Heaven and breathtaking views of Mount Agung.</p>
+        <p>Continue to Tirta Gangga, a former royal water palace of fountains and sacred pools, then close at Blue Lagoon Beach — a peaceful, secluded bay with crystal-clear water for swimming or quiet reflection.</p>
+        <div class="day-tags">
+          <span class="tag">Optional excursion</span>
+          <span class="tag">Lempuyang Temple</span>
+          <span class="tag">Tirta Gangga</span>
+          <span class="tag">Blue Lagoon</span>
+        </div>
+      </div>
+      <div class="day-image round" style="background-image: url('https://images.unsplash.com/photo-1555400038-63f5ba517a47?w=600&q=80');"></div>
+    </div>
+
+    <div class="day reveal">
+      <div class="day-num"><span class="label">Day Five</span><span class="num">05</span></div>
+      <div class="day-body">
+        <h3>Rice Terraces &amp; Elevated Indulgence</h3>
+        <p>A final uplifting yoga session, then a guided walk through the iconic Tegallalang Rice Terraces — a UNESCO-recognized landscape shaped by centuries of traditional irrigation.</p>
+        <p>Lunch at the renowned Tis Café with panoramic terrace views, then the iconic Bali Swing soaring above the rice fields, and a curated flying-dress photoshoot — photos and videos included. Close the day with a beautifully curated group dinner.</p>
+        <div class="day-tags">
+          <span class="tag">Tegallalang Terraces</span>
+          <span class="tag">Tis Café</span>
+          <span class="tag">Bali Swing</span>
+          <span class="tag">Flying-dress shoot</span>
+        </div>
+      </div>
+      <div class="day-image" style="background-image: url('https://images.unsplash.com/photo-1604999565976-8913ad2ddb7c?w=600&q=80');"></div>
+    </div>
+
+    <div class="day reveal">
+      <div class="day-num"><span class="label">Day Six</span><span class="num">06</span></div>
+      <div class="day-body">
+        <h3>Closing Ritual, Flowers &amp; Reflections</h3>
+        <p>Begin your final day with gentle yoga, followed by a beautiful flower closing ceremony — a guided moment to honor the experiences lived, the connections created, and the growth embraced together.</p>
+        <p>A nourishing breakfast in the resort's peaceful surroundings, check-out, and a private transfer to the airport. Depart with cherished memories, a sense of renewal, and the essence of Bali quietly carried within.</p>
+        <div class="day-tags">
+          <span class="tag">Closing ceremony</span>
+          <span class="tag">Reflection</span>
+          <span class="tag">Private transfer</span>
+        </div>
+      </div>
+      <div class="day-image round" style="background-image: url('https://images.unsplash.com/photo-1545579133-99bb5ab189bd?w=600&q=80');"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ INCLUSIONS ============ -->
+<section class="inclusions">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow">What's Inside</span>
+      <div>
+        <h2 class="display">Every detail, <em>quietly considered.</em></h2>
+        <p>Refined experiences and thoughtful logistics so you can simply arrive, breathe, and be present.</p>
+      </div>
+    </div>
+
+    <div class="inc-grid reveal">
+      <div class="inc-col">
+        <h4><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M5 13l4 4L19 7"/></svg> What's Included</h4>
+        <ul>
+          <li>5 nights at the 5-star Kastara Resort &amp; Spa, Ubud</li>
+          <li>5 curated breakfasts and 5 elegant dinners</li>
+          <li>Private driver and round-trip airport transfers</li>
+          <li>Daily yoga, meditation, and breathwork with Dayana Solano</li>
+          <li>Flower opening &amp; closing ceremonies and Canang Sari workshop</li>
+          <li>Melukat purification ritual and waterfall meditation</li>
+          <li>60-minute Balinese massage at Green Tara Spa</li>
+          <li>Tegallalang rice terraces walk &amp; Bali Swing experience</li>
+          <li>Flying-dress photoshoot — photos and videos included</li>
+          <li>Legong dance performance at the Ubud Water Palace</li>
+          <li>Full host support throughout the journey</li>
+        </ul>
+      </div>
+      <div class="inc-col exc">
+        <h4><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M6 6l12 12M6 18L18 6"/></svg> Not Included</h4>
+        <ul>
+          <li>International airfare</li>
+          <li>Travel and health insurance</li>
+          <li>Visa fees</li>
+          <li>Meals not specified in the itinerary</li>
+          <li>Optional excursions (e.g. East Bali discovery)</li>
+          <li>Personal expenses and gratuities</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ HOST ============ -->
+<section class="host" id="host">
+  <div class="container">
+    <div class="host-grid">
+      <div class="host-img reveal"></div>
+      <div class="host-text reveal">
+        <span class="eyebrow">Meet Your Host</span>
+        <h2 class="display" style="margin-top: 1rem;">Guided by <em>Dayana Solano</em></h2>
+        <p>Blending mindful movement, breath, and wellness with a soft, elevated edge. Award-winning influencer inspiring balanced, grounded living through beauty, discipline, and inner strength.</p>
+        <p>Throughout the journey, Dayana will hold space for daily practice and quiet reflection, alongside the Sabriyoga Experience team — known for retreats that go beyond yoga into something more transformative.</p>
+        <div class="host-stats">
+          <div><strong>322K</strong><span>@dayanasolanob</span></div>
+          <div><strong>10+ yrs</strong><span>Sabriyoga retreats</span></div>
+          <div><strong>EN / ES</strong><span>Spanish translator on site</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ TESTIMONIALS ============ -->
+<section class="testimonials">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow">Travelers' Words</span>
+      <div>
+        <h2 class="display">Stories from <em>past journeys.</em></h2>
+        <p>Reflections from those who have walked this path with Sabriyoga before — in the Maldives, Zanzibar, Spain, and now Bali.</p>
+      </div>
+    </div>
+
+    <div class="test-grid">
+      <div class="test-card reveal">
+        <div class="stars">★ ★ ★ ★ ★</div>
+        <p>"I am leaving very happy, deeply renewed, and full of joy. The most powerful moment of connection for me was the Melukat water ritual on the final day — it helped me let go of what I no longer want and open myself to the new. Sabrina does everything with immense care and love."</p>
+        <div class="author"><strong>Ruth Sarmiento</strong>Spain · Bali Retreat</div>
+      </div>
+      <div class="test-card reveal">
+        <div class="stars">★ ★ ★ ★ ★</div>
+        <p>"My second yoga experience with Sabriyoga and words are not enough. The most powerful moment for me was the waterfalls — the power of the water, the vastness of nature, and that deep sense of peace. The group became a small family in such a short time."</p>
+        <div class="author"><strong>Yolanda Vidal</strong>Spain · Maldives &amp; Bali</div>
+      </div>
+      <div class="test-card reveal">
+        <div class="stars">★ ★ ★ ★ ★</div>
+        <p>"My fourth experience with Sabriyoga. These have been the finest yoga retreats I have ever attended — and I have been attending retreats for over a decade. Sabrina guides each experience straight from the heart. You leave feeling renewed, strengthened, and truly cared for."</p>
+        <div class="author"><strong>Pilar Escartin</strong>Spain · Spain, Maldives &amp; Bali</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FAQ ============ -->
+<section class="faq" id="faq">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow">Frequently Asked</span>
+      <div>
+        <h2 class="display">Questions, <em>thoughtfully answered.</em></h2>
+        <p>If something isn't covered below, our team is happy to walk you through every detail before you book.</p>
+      </div>
+    </div>
+
+    <div class="faq-grid">
+      <details>
+        <summary>What's included in the experience?</summary>
+        <p>6 days / 5 nights at the 5-star Kastara Resort &amp; Spa, Ubud, with daily breakfast, five dinners, private driver, round-trip airport transfers, all activities in the itinerary, and full host support throughout the journey.</p>
+      </details>
+      <details>
+        <summary>What's not included?</summary>
+        <p>International airfare, travel insurance, visa fees, meals not specified in the itinerary, and optional activities such as the East Bali discovery day.</p>
+      </details>
+      <details>
+        <summary>How do I confirm my spot?</summary>
+        <p>A 25% deposit is required to secure your place. The remaining balance is due up to 45 days before the trip. Bank transfers and digital payment methods are accepted.</p>
+      </details>
+      <details>
+        <summary>What is the group size?</summary>
+        <p>Groups are kept small and intimate, typically between 8–15 travelers, to ensure a personal and elevated experience. This retreat has 12 spots.</p>
+      </details>
+      <details>
+        <summary>Will the host travel with us?</summary>
+        <p>Yes — Dayana will be present throughout the entire journey, guiding practice and supporting the group from arrival to closing ceremony.</p>
+      </details>
+      <details>
+        <summary>Do I need prior yoga experience?</summary>
+        <p>No previous experience is required. All sessions are designed to be accessible and enjoyable for every level — gentle, grounding, and welcoming.</p>
+      </details>
+      <details>
+        <summary>Can I join solo?</summary>
+        <p>Absolutely. Many guests travel solo, and the experience is designed to foster connection, community, and meaningful relationships among like-minded people.</p>
+      </details>
+      <details>
+        <summary>Can I have a private room?</summary>
+        <p>Yes — private room options are available upon request, subject to availability. Contact us for details and pricing.</p>
+      </details>
+      <details>
+        <summary>What language is the retreat in?</summary>
+        <p>The retreat is conducted in English, including all yoga sessions. A Spanish translator is available throughout for Spanish-speaking guests.</p>
+      </details>
+      <details>
+        <summary>Can dietary needs be accommodated?</summary>
+        <p>Yes — please share any dietary requirements in advance and we will do our best to accommodate them throughout meals and curated dining moments.</p>
+      </details>
+      <details>
+        <summary>What airport should I fly into?</summary>
+        <p>Fly into Ngurah Rai International Airport (Denpasar, Bali). Private transfers are arranged throughout the day on arrival, and after breakfast on departure.</p>
+      </details>
+      <details>
+        <summary>What should I pack?</summary>
+        <p>Comfortable clothing for yoga, light breathable outfits, swimwear, and a few elegant pieces for dinners and special moments. A detailed packing list is shared before departure.</p>
+      </details>
+      <details>
+        <summary>Will there be a group chat before the trip?</summary>
+        <p>Yes — you'll be added to a private group before the retreat, plus pre-trip online sessions to answer questions and ensure you arrive feeling fully prepared and connected.</p>
+      </details>
+      <details>
+        <summary>How physically demanding is it?</summary>
+        <p>Light to moderate. The retreat is designed to be accessible, with all activities optional. You're always encouraged to listen to your body and rest as needed.</p>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- ============ POLICIES ============ -->
+<section class="policies">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow">Booking &amp; Policies</span>
+      <div>
+        <h2 class="display">Cancellation, <em>clearly stated.</em></h2>
+        <p>A 25% non-refundable deposit secures your spot. Full refund only if the trip is cancelled by the organizer.</p>
+      </div>
+    </div>
+
+    <div class="policy-card reveal">
+      <h3>Cancellation timeline</h3>
+      <div class="cancel-table">
+        <div class="cancel-row"><span>45+ days before</span><span>30% fee · 70% refund</span></div>
+        <div class="cancel-row"><span>30–44 days before</span><span>50% fee</span></div>
+        <div class="cancel-row"><span>15–29 days before</span><span>75% fee</span></div>
+        <div class="cancel-row"><span>0–14 days before</span><span>100% fee</span></div>
+      </div>
+      <p class="policy-note">This trip requires a minimum of 8 participants. If the minimum is not reached 30 days prior to departure, the trip will be cancelled and a 90% refund issued (10% retained for processing). In case of unforeseen weather conditions or government restrictions, certain activities may be modified or replaced with suitable alternatives. Refunds are processed within 30–60 working days. Travel and health insurance are strongly recommended and are the responsibility of each participant.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FINAL CTA ============ -->
+<section class="final-cta" id="reserve">
+  <span class="eyebrow">Limited to 12 travelers</span>
+  <h2>Your seat at the <em>jungle's edge</em><br />is waiting.</h2>
+  <p>Reserve your place with a 25% deposit. We'll be in touch within 24 hours to begin your journey to Ubud.</p>
+  <a href="#" class="btn">Reserve Your Spot →</a>
+  <div class="deposit-pill">● 25% Deposit · Bank Transfer or Digital Payment</div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer>
+  <div class="footer-grid">
+    <div>
+      <h5>Sabriyoga Experience</h5>
+      <p>Carefully curated journeys blending wellness, cultural immersion, and human connection — in Bali, Maldives, Zanzibar, and beyond.</p>
+    </div>
+    <div>
+      <h5>Explore</h5>
+      <ul>
+        <li><a href="#about">The Experience</a></li>
+        <li><a href="#itinerary">Itinerary</a></li>
+        <li><a href="#host">Your Host</a></li>
+        <li><a href="#faq">FAQ</a></li>
+      </ul>
+    </div>
+    <div>
+      <h5>Connect</h5>
+      <ul>
+        <li><a href="#">Email us</a></li>
+        <li><a href="#">@dayanasolanob</a></li>
+        <li><a href="#">@sabriyoga.experience</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2026 Sabriyoga Experience · All rights reserved</span>
+    <span>Bali, Indonesia · Nov 2026</span>
+  </div>
+</footer>
+
+<script>
+  // Mark JS as enabled (used by CSS for progressive enhancement)
+  document.documentElement.classList.add('js-enabled');
+
+  (function () {
+    var revealEls = document.querySelectorAll('.reveal');
+
+    // Safety fallback: if anything goes wrong, reveal everything after 1.5s.
+    var safetyTimer = setTimeout(function () {
+      revealEls.forEach(function (el) { el.classList.add('visible'); });
+    }, 1500);
+
+    if ('IntersectionObserver' in window) {
+      var io = new IntersectionObserver(function (entries) {
+        entries.forEach(function (e) {
+          if (e.isIntersecting) {
+            e.target.classList.add('visible');
+            io.unobserve(e.target);
+          }
+        });
+      }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+
+      revealEls.forEach(function (el) {
+        // If element is already in viewport at load, reveal immediately
+        var r = el.getBoundingClientRect();
+        if (r.top < window.innerHeight && r.bottom > 0) {
+          el.classList.add('visible');
+        } else {
+          io.observe(el);
+        }
+      });
+    } else {
+      // Old browser — just show everything
+      clearTimeout(safetyTimer);
+      revealEls.forEach(function (el) { el.classList.add('visible'); });
+    }
+
+    // Subtle nav shrink
+    var nav = document.querySelector('nav');
+    window.addEventListener('scroll', function () {
+      if (window.scrollY > 30) nav.style.padding = '0.9rem 3rem';
+      else nav.style.padding = '1.4rem 3rem';
+    });
+  })();
+</script>
+
+</body>
+</html>
