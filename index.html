@@ -2042,7 +2042,7 @@
         <p>Leave your details and we'll let you know about upcoming Sabriyoga journeys — Bali, Maldives, Zanzibar, and more.</p>
       </div>
 
-      <form class="waitlist-form" id="waitlistForm" action="https://formspree.io/f/YOUR_FORM_ID" method="POST" novalidate>
+      <form class="waitlist-form" id="waitlistForm" action="https://formspree.io/f/mdabgzqb" method="POST" novalidate>
         <div class="input-row">
           <input type="text" name="name" placeholder="Your name" required aria-label="Your name" />
           <input type="email" name="email" placeholder="Email address" required aria-label="Email address" />
@@ -2141,15 +2141,6 @@
     var successMsg = document.getElementById('waitlistSuccess');
     if (form) {
       form.addEventListener('submit', function (e) {
-        // If the form action is still a placeholder, prevent submission and just show success.
-        if (form.action.indexOf('YOUR_FORM_ID') !== -1) {
-          e.preventDefault();
-          successMsg.classList.add('visible');
-          form.querySelector('button').style.display = 'none';
-          form.querySelectorAll('input').forEach(function (i) { i.disabled = true; i.style.opacity = '0.6'; });
-          return;
-        }
-        // Otherwise let it submit (Formspree, etc.) and show success on AJAX
         e.preventDefault();
         var data = new FormData(form);
         fetch(form.action, {
@@ -2162,10 +2153,10 @@
             form.querySelector('button').style.display = 'none';
             form.querySelectorAll('input').forEach(function (i) { i.disabled = true; i.style.opacity = '0.6'; });
           } else {
-            alert('Something went wrong. Please try again or message Sabrina directly on WhatsApp.');
+            alert('Something went wrong. Please try again or message us directly on WhatsApp.');
           }
         }).catch(function () {
-          alert('Something went wrong. Please try again or message Sabrina directly on WhatsApp.');
+          alert('Something went wrong. Please try again or message us directly on WhatsApp.');
         });
       });
     }
