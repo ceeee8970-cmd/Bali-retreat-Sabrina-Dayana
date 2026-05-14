@@ -571,6 +571,243 @@
   }
   @media (max-width: 880px) { .about-grid { grid-template-columns: 1fr; } }
 
+  /* Hotel link line above description */
+  .hotel-link-line {
+    font-family: 'Fraunces', serif;
+    font-size: 1.15rem;
+    color: var(--ink);
+    margin: 0.4rem 0 1rem;
+    letter-spacing: 0.01em;
+  }
+  .hotel-link {
+    color: var(--moss);
+    text-decoration: none;
+    border-bottom: 1px solid rgba(79, 98, 72, 0.3);
+    padding-bottom: 1px;
+    font-style: italic;
+    transition: color 0.2s ease, border-color 0.2s ease;
+  }
+  .hotel-link:hover {
+    color: var(--olive);
+    border-bottom-color: var(--olive);
+  }
+  .hotel-link .arrow {
+    display: inline-block;
+    font-size: 0.85em;
+    margin-left: 0.15em;
+    transition: transform 0.2s ease;
+  }
+  .hotel-link:hover .arrow { transform: translate(2px, -2px); }
+
+  /* Resort photo strip */
+  .resort-strip {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+    margin: 2.5rem 0 4rem;
+  }
+  .resort-img {
+    aspect-ratio: 4/3;
+    border-radius: 4px;
+    background-size: cover;
+    background-position: center;
+    box-shadow: 0 18px 36px -16px rgba(43, 42, 37, 0.25);
+    transition: transform 0.4s ease;
+  }
+  .resort-img:hover { transform: translateY(-4px); }
+  @media (max-width: 880px) {
+    .resort-strip { grid-template-columns: 1fr; gap: 0.75rem; }
+    .resort-img { aspect-ratio: 16/10; }
+  }
+
+  /* ============ ROOM TYPES ============ */
+  .rooms {
+    background: var(--ivory);
+    background-image:
+      radial-gradient(ellipse at bottom, rgba(176, 138, 74, 0.06), transparent 60%);
+  }
+  .rooms-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.75rem;
+    margin-top: 3rem;
+  }
+  .room-card {
+    background: #fff;
+    border-radius: 6px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 18px 40px -22px rgba(43, 42, 37, 0.22);
+    border: 1px solid rgba(231, 220, 196, 0.5);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  .room-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 28px 50px -22px rgba(43, 42, 37, 0.28);
+  }
+  .room-gallery {
+    position: relative;
+    aspect-ratio: 4/3;
+    overflow: hidden;
+  }
+  .room-gallery .main {
+    position: absolute;
+    inset: 0;
+    background-size: cover;
+    background-position: center;
+    transition: transform 0.5s ease;
+  }
+  .room-card:hover .room-gallery .main { transform: scale(1.04); }
+  .room-thumbs {
+    position: absolute;
+    bottom: 0.75rem;
+    right: 0.75rem;
+    display: flex;
+    gap: 0.4rem;
+    z-index: 2;
+  }
+  .room-thumb {
+    width: 48px;
+    height: 48px;
+    border-radius: 4px;
+    background-size: cover;
+    background-position: center;
+    border: 2px solid #fff;
+    box-shadow: 0 4px 12px rgba(43, 42, 37, 0.3);
+    cursor: pointer;
+    transition: transform 0.2s ease;
+  }
+  .room-thumb:hover { transform: scale(1.08); }
+  .room-tag {
+    position: absolute;
+    top: 0.85rem;
+    left: 0.85rem;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(6px);
+    color: var(--olive);
+    padding: 0.32rem 0.7rem;
+    border-radius: 999px;
+    font-size: 0.72rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    font-weight: 500;
+    z-index: 2;
+  }
+  .room-body {
+    padding: 1.6rem 1.5rem 1.7rem;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+  }
+  .room-body h3 {
+    font-family: 'Fraunces', serif;
+    font-size: 1.55rem;
+    font-weight: 500;
+    color: var(--ink);
+    margin: 0 0 0.5rem;
+    letter-spacing: -0.01em;
+  }
+  .room-body .room-desc {
+    color: rgba(43, 42, 37, 0.7);
+    line-height: 1.6;
+    font-size: 0.95rem;
+    margin: 0 0 1.1rem;
+  }
+  .room-specs {
+    display: flex;
+    flex-direction: column;
+    gap: 0.55rem;
+    margin: 0 0 1.4rem;
+    padding: 1rem 0;
+    border-top: 1px solid rgba(231, 220, 196, 0.7);
+    border-bottom: 1px solid rgba(231, 220, 196, 0.7);
+  }
+  .room-spec {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.6rem;
+    font-size: 0.88rem;
+    color: rgba(43, 42, 37, 0.85);
+    line-height: 1.5;
+  }
+  .room-spec svg {
+    flex-shrink: 0;
+    color: var(--moss);
+    margin-top: 0.15rem;
+  }
+  .room-spec strong {
+    color: var(--ink);
+    font-weight: 500;
+    margin-right: 0.2rem;
+  }
+  .room-price-block {
+    margin-bottom: 1.1rem;
+  }
+  .room-price-label {
+    font-size: 0.72rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: rgba(43, 42, 37, 0.55);
+    margin-bottom: 0.25rem;
+  }
+  .room-price {
+    font-family: 'Fraunces', serif;
+    font-size: 1.85rem;
+    font-weight: 400;
+    color: var(--ink);
+    line-height: 1.1;
+  }
+  .room-price-suffix {
+    font-size: 0.85rem;
+    color: rgba(43, 42, 37, 0.6);
+    font-family: 'Inter Tight', sans-serif;
+    margin-left: 0.3rem;
+  }
+  .room-cta {
+    margin-top: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+  }
+  .btn-reserve {
+    background: var(--moss);
+    color: #fff;
+    padding: 0.95rem 1.5rem;
+    border-radius: 999px;
+    text-decoration: none;
+    text-align: center;
+    font-weight: 500;
+    letter-spacing: 0.04em;
+    font-size: 0.92rem;
+    transition: background 0.2s ease, transform 0.2s ease;
+    display: inline-block;
+  }
+  .btn-reserve:hover {
+    background: var(--olive);
+    transform: translateY(-1px);
+  }
+  .btn-room-whatsapp {
+    background: transparent;
+    color: var(--moss);
+    padding: 0.65rem 1.5rem;
+    border-radius: 999px;
+    text-decoration: none;
+    text-align: center;
+    font-size: 0.85rem;
+    letter-spacing: 0.03em;
+    border: 1px solid rgba(79, 98, 72, 0.25);
+    transition: background 0.2s ease, border-color 0.2s ease;
+  }
+  .btn-room-whatsapp:hover {
+    background: rgba(79, 98, 72, 0.06);
+    border-color: var(--moss);
+  }
+  @media (max-width: 980px) {
+    .rooms-grid { grid-template-columns: 1fr; gap: 1.25rem; }
+    .room-card { max-width: 480px; margin: 0 auto; width: 100%; }
+  }
+
   /* ============ ITINERARY ============ */
   .itinerary {
     background: var(--cream);
@@ -1496,6 +1733,7 @@
   <ul>
     <li><a href="#hero">Dayana Solano — Your Host</a></li>
     <li><a href="#about">Experience</a></li>
+    <li><a href="#rooms">Rooms</a></li>
     <li><a href="#itinerary">Itinerary</a></li>
     <li><a href="#logistics">Flights</a></li>
     <li><a href="#sabrina">Group Leader</a></li>
@@ -1637,8 +1875,16 @@
       <span class="eyebrow">The Experience</span>
       <div>
         <h2 class="display">Quiet luxury, woven with <em>devotion.</em></h2>
+        <p class="hotel-link-line">Hosted at <a href="https://www.sereshotelsresorts.com/" target="_blank" rel="noopener" class="hotel-link">SereS Springs Resort &amp; Spa <span class="arrow">↗</span></a></p>
         <p>Five nights in a 5-star sanctuary perched on a jungle cliff, with an infinity pool over the rice terraces. Curated tours, sacred rituals, and gentle daily practice — designed to ease the body and open the heart.</p>
       </div>
+    </div>
+
+    <!-- Resort photo strip -->
+    <div class="resort-strip reveal">
+      <div class="resort-img" style="background-image: url('images/resort-1.jpg');"></div>
+      <div class="resort-img" style="background-image: url('images/resort-2.jpg');"></div>
+      <div class="resort-img" style="background-image: url('images/resort-3.jpg');"></div>
     </div>
 
     <div class="about-grid">
@@ -1663,6 +1909,156 @@
         <h3>Nature &amp; renewal</h3>
         <p>Tegallalang rice terraces, hidden waterfalls, the iconic Bali Swing, a flying-dress photoshoot, and a 60-minute Balinese massage.</p>
       </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ ROOM TYPES ============ -->
+<section class="rooms" id="rooms">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow">Choose your room</span>
+      <div>
+        <h2 class="display">Where you'll <em>rest.</em></h2>
+        <p>Three ways to settle in at SereS Springs. Every room comes with the same five-star comfort — choose the space that feels right for the way you travel.</p>
+      </div>
+    </div>
+
+    <div class="rooms-grid">
+
+      <!-- SINGLE ROOM (for couples sharing) -->
+      <div class="room-card reveal">
+        <div class="room-gallery">
+          <div class="room-tag">For couples · 2 guests</div>
+          <div class="main" style="background-image: url('images/room-single-1.jpg');"></div>
+          <div class="room-thumbs">
+            <div class="room-thumb" style="background-image: url('images/room-single-2.jpg');" onclick="document.querySelector('#single-main').style.backgroundImage=this.style.backgroundImage"></div>
+          </div>
+        </div>
+        <div class="room-body">
+          <h3>Single Room</h3>
+          <p class="room-desc">A serene retreat for two, with a king-size bed, traditional Balinese accents and valley or rice-terrace views. Refined comfort with all the soul of Bali.</p>
+
+          <div class="room-specs">
+            <div class="room-spec">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M2 12h20M4 8v8M20 8v8M6 12V8h12v4"/></svg>
+              <span><strong>Bed:</strong> 1 king-size bed (2 guests sharing)</span>
+            </div>
+            <div class="room-spec">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 3h18v18H3z"/><path d="M9 3v18M3 9h18"/></svg>
+              <span><strong>Size:</strong> — m²</span>
+            </div>
+            <div class="room-spec">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="9"/><path d="M2 12h20M12 2c3 3 3 17 0 20M12 2c-3 3-3 17 0 20"/></svg>
+              <span><strong>View:</strong> Rice terrace / valley</span>
+            </div>
+            <div class="room-spec">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 2l2.4 7.4H22l-6.2 4.5 2.4 7.4L12 16.8 5.8 21.3l2.4-7.4L2 9.4h7.6z"/></svg>
+              <span><strong>Includes:</strong> Daily breakfast, A/C, balcony, free Wi-Fi</span>
+            </div>
+          </div>
+
+          <div class="room-price-block">
+            <div class="room-price-label">Total retreat package</div>
+            <div class="room-price">€ —<span class="room-price-suffix">per person</span></div>
+          </div>
+
+          <div class="room-cta">
+            <a href="#" class="btn-reserve">Reserve this room</a>
+            <a href="https://wa.me/34931282688?text=Hi%20Sabrina%2C%20I%27d%20like%20to%20book%20the%20Single%20Room%20for%20the%20Bali%20retreat" target="_blank" rel="noopener" class="btn-room-whatsapp">or chat on WhatsApp</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- DOUBLE ROOM -->
+      <div class="room-card reveal">
+        <div class="room-gallery">
+          <div class="room-tag">For 2 guests · twin beds</div>
+          <div class="main" style="background-image: url('images/room-double-1.jpg');"></div>
+          <div class="room-thumbs">
+            <div class="room-thumb" style="background-image: url('images/room-double-2.jpg');"></div>
+          </div>
+        </div>
+        <div class="room-body">
+          <h3>Double Room</h3>
+          <p class="room-desc">Two twin beds with a private balcony overlooking the resort's tropical gardens or rice fields. Ideal for friends traveling together who prefer their own space at rest.</p>
+
+          <div class="room-specs">
+            <div class="room-spec">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M2 12h20M4 8v8M20 8v8M6 12V8h5v4M13 12V8h5v4"/></svg>
+              <span><strong>Bed:</strong> 2 twin beds</span>
+            </div>
+            <div class="room-spec">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 3h18v18H3z"/><path d="M9 3v18M3 9h18"/></svg>
+              <span><strong>Size:</strong> — m²</span>
+            </div>
+            <div class="room-spec">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="9"/><path d="M2 12h20M12 2c3 3 3 17 0 20M12 2c-3 3-3 17 0 20"/></svg>
+              <span><strong>View:</strong> Rice terrace / garden</span>
+            </div>
+            <div class="room-spec">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 2l2.4 7.4H22l-6.2 4.5 2.4 7.4L12 16.8 5.8 21.3l2.4-7.4L2 9.4h7.6z"/></svg>
+              <span><strong>Includes:</strong> Daily breakfast, A/C, balcony, free Wi-Fi</span>
+            </div>
+          </div>
+
+          <div class="room-price-block">
+            <div class="room-price-label">Total retreat package</div>
+            <div class="room-price">€ —<span class="room-price-suffix">per person</span></div>
+          </div>
+
+          <div class="room-cta">
+            <a href="#" class="btn-reserve">Reserve this room</a>
+            <a href="https://wa.me/34931282688?text=Hi%20Sabrina%2C%20I%27d%20like%20to%20book%20the%20Double%20Room%20for%20the%20Bali%20retreat" target="_blank" rel="noopener" class="btn-room-whatsapp">or chat on WhatsApp</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- VILLA -->
+      <div class="room-card reveal">
+        <div class="room-gallery">
+          <div class="room-tag">Private pool · 2 guests</div>
+          <div class="main" style="background-image: url('images/room-villa-1.jpg');"></div>
+          <div class="room-thumbs">
+            <div class="room-thumb" style="background-image: url('images/room-villa-2.jpg');"></div>
+            <div class="room-thumb" style="background-image: url('images/room-villa-3.jpg');"></div>
+          </div>
+        </div>
+        <div class="room-body">
+          <h3>Private Villa</h3>
+          <p class="room-desc">Your own private sanctuary with plunge pool, outdoor terrace, four-poster canopy bed and a luxurious open-plan bathroom. The most immersive way to experience SereS Springs.</p>
+
+          <div class="room-specs">
+            <div class="room-spec">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M2 12h20M4 8v8M20 8v8M6 12V8h12v4"/></svg>
+              <span><strong>Bed:</strong> 1 king-size canopy bed</span>
+            </div>
+            <div class="room-spec">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 3h18v18H3z"/><path d="M9 3v18M3 9h18"/></svg>
+              <span><strong>Size:</strong> — m²</span>
+            </div>
+            <div class="room-spec">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M2 12h20M4 16c0-2 2-2 4-2s4 0 4 2M12 14c2 0 4 0 4 2M16 16c2 0 4 0 4-2"/><path d="M6 8c0-2 2-3 4-3M14 5c2 0 4 1 4 3"/></svg>
+              <span><strong>Includes:</strong> Private plunge pool, outdoor terrace, soaking tub</span>
+            </div>
+            <div class="room-spec">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 2l2.4 7.4H22l-6.2 4.5 2.4 7.4L12 16.8 5.8 21.3l2.4-7.4L2 9.4h7.6z"/></svg>
+              <span><strong>Extras:</strong> Daily breakfast, butler-style service, jungle views</span>
+            </div>
+          </div>
+
+          <div class="room-price-block">
+            <div class="room-price-label">Total retreat package</div>
+            <div class="room-price">€ —<span class="room-price-suffix">per person</span></div>
+          </div>
+
+          <div class="room-cta">
+            <a href="#" class="btn-reserve">Reserve this villa</a>
+            <a href="https://wa.me/34931282688?text=Hi%20Sabrina%2C%20I%27d%20like%20to%20book%20the%20Private%20Villa%20for%20the%20Bali%20retreat" target="_blank" rel="noopener" class="btn-room-whatsapp">or chat on WhatsApp</a>
+          </div>
+        </div>
+      </div>
+
     </div>
   </div>
 </section>
@@ -2176,6 +2572,7 @@
       <h5>Explore</h5>
       <ul>
         <li><a href="#about">The Experience</a></li>
+        <li><a href="#rooms">Rooms</a></li>
         <li><a href="#itinerary">Itinerary</a></li>
         <li><a href="#logistics">Flights &amp; Logistics</a></li>
         <li><a href="#sabrina">Group Leader</a></li>
