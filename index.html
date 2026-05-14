@@ -275,6 +275,34 @@
   }
   .hero-language-note svg { color: var(--moss); flex-shrink: 0; }
   .hero-language-note strong { font-weight: 500; }
+
+  .hero-stats {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 1.2rem;
+    padding: 1.4rem 0;
+    margin-bottom: 1.6rem;
+    border-top: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+  }
+  .hero-stats div strong {
+    display: block;
+    font-family: 'Fraunces', serif;
+    font-weight: 400;
+    font-size: 1.4rem;
+    color: var(--moss);
+    margin-bottom: 0.15rem;
+    line-height: 1.1;
+  }
+  .hero-stats div span {
+    font-size: 0.7rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+  }
+  @media (max-width: 600px) {
+    .hero-stats { grid-template-columns: 1fr; gap: 0.6rem; }
+  }
   .hero-cta-row {
     display: flex;
     gap: 0.9rem;
@@ -613,10 +641,43 @@
   }
   .day-image.round { border-radius: 200px 200px 4px 4px; }
 
+  /* Day image pair: big rectangle + small circle accent */
+  .day-images {
+    position: relative;
+    aspect-ratio: 3/4;
+  }
+  .day-images .big {
+    position: absolute;
+    inset: 0;
+    border-radius: 4px;
+    background-size: cover;
+    background-position: center;
+    box-shadow: 0 18px 36px -16px rgba(43, 42, 37, 0.3);
+  }
+  .day-images.round .big { border-radius: 200px 200px 4px 4px; }
+  .day-images .small {
+    position: absolute;
+    width: 42%;
+    aspect-ratio: 1/1;
+    border-radius: 50%;
+    background-size: cover;
+    background-position: center;
+    border: 6px solid var(--cream);
+    box-shadow: 0 14px 30px -10px rgba(43, 42, 37, 0.35);
+    z-index: 2;
+  }
+  /* Alternating placement: even days = circle bottom-left; odd days = circle top-right */
+  .day-images .small.tr { top: -8%; right: -10%; }
+  .day-images .small.bl { bottom: -8%; left: -10%; }
+
   @media (max-width: 980px) {
     .day { grid-template-columns: 1fr; gap: 1.5rem; }
     .day-num .num { font-size: 3.2rem; }
     .day-image { aspect-ratio: 4/3; max-width: 100%; }
+    .day-images { aspect-ratio: 4/3; max-width: 100%; margin-top: 1rem; }
+    .day-images .small { width: 32%; }
+    .day-images .small.tr { top: -10%; right: 4%; }
+    .day-images .small.bl { bottom: -10%; left: 4%; }
   }
 
   /* ============ INCLUSIONS ============ */
@@ -952,6 +1013,10 @@
   .testimonials.light .section-head h2 em { color: var(--moss); }
   .testimonials.light .section-head p { color: var(--ink-soft); }
   .testimonials.light .eyebrow { color: var(--gold); }
+  .testimonials.light .test-grid { grid-template-columns: repeat(2, 1fr); }
+  @media (max-width: 980px) {
+    .testimonials.light .test-grid { grid-template-columns: 1fr; }
+  }
   .testimonials::before {
     content: '“';
     position: absolute;
@@ -1453,11 +1518,17 @@
 <!-- ============ HERO — DAYANA ============ -->
 <section class="hero" id="hero">
   <div class="hero-text">
-    <span class="retreat-pill">Bali · Ubud · A Sabriyoga Experience</span>
+    <span class="retreat-pill">Bali · Ubud · 17–22 July</span>
     <h1 class="display">Travel to Bali, awaken your essence with <em>Dayana Solano.</em></h1>
-    <p class="lead">Dayana Solano is a yoga teacher, nutritionist, and wellness expert dedicated to helping people reconnect with their body, energy, and inner clarity.</p>
-    <p class="lead">With over 15 years of experience and more than 1,500 hours of training across yoga, Ayurveda, and sound healing, her approach blends ancient practices with modern understanding of the body and nervous system.</p>
-    <p class="lead">Her international journey spans Europe, the Middle East, and luxury wellness spaces — guiding individuals and communities seeking balance, performance, and transformation. Her work goes beyond physical practice, creating experiences that support deep mental, emotional, and energetic alignment.</p>
+    <p class="lead">Dayana Solano is a yoga teacher, nutritionist, and <strong>wellness expert</strong> dedicated to helping people reconnect with their body, energy, and inner clarity.</p>
+    <p class="lead">With over <strong>15 years of experience</strong> and more than <strong>1,500 hours of registered training</strong> across yoga, Ayurveda, and sound healing, her approach blends ancient practices with modern understanding of the body and nervous system.</p>
+    <p class="lead">Her international journey spans Europe, the Middle East, and luxury wellness spaces — guiding individuals and communities seeking balance, performance, and transformation. Her work goes beyond physical practice, creating experiences that support <strong>deep mental, emotional, and energetic alignment</strong>.</p>
+
+    <div class="hero-stats">
+      <div><strong>15+ yrs</strong><span>Experience</span></div>
+      <div><strong>1,500+ hrs</strong><span>Registered training</span></div>
+      <div><strong>Wellness</strong><span>Expert</span></div>
+    </div>
 
     <div class="hero-language-note">
       <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true">
@@ -1532,8 +1603,13 @@
       </div>
       <div class="test-card reveal">
         <div class="stars">★ ★ ★ ★ ★</div>
+        <p>"Dayana is a yoga teacher who truly teaches from the heart. You can feel the love and intention she puts into every class. She is kind, genuine, and full of ambition, which reflects in the way she guides and supports others. During her classes, I feel calm, grounded, and completely present. She creates a safe and positive space where you can really connect with yourself, both physically and mentally. Since practicing with her, I've noticed a greater sense of balance and inner peace."</p>
+        <div class="author"><strong>Amelia Barrett</strong>Belgium</div>
+      </div>
+      <div class="test-card reveal">
+        <div class="stars">★ ★ ★ ★ ★</div>
         <p>"You made me love yoga. Always feeling fulfilled after your class. You exactly know what balance between soul and body and mind. If I hear the word yoga, I always remember you."</p>
-        <div class="author"><strong>Dariia</strong>Ukraine</div>
+        <div class="author"><strong>Dariia Orlova</strong>Ukraine</div>
       </div>
       <div class="test-card reveal" style="background: linear-gradient(135deg, var(--cream), var(--ivory)); display: flex; flex-direction: column; justify-content: center; align-items: flex-start; gap: 1rem; padding: 2.4rem;">
         <span class="eyebrow" style="color: var(--moss);">Practice with Dayana</span>
@@ -1571,7 +1647,7 @@
           <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 2L4 12h6v8h4v-8h6L12 2z"/></svg>
         </div>
         <h3>Refined sanctuary</h3>
-        <p>Five nights at The Kastara Resort & Spa, Ubud — daily breakfast, infinity pool over the jungle, private driver, and seamless airport transfers.</p>
+        <p>Five nights at the 5-star Seres Springs Resort & Spa, Ubud — daily breakfast, infinity pool over the jungle, private driver, and seamless airport transfers.</p>
       </div>
       <div class="feature-card reveal">
         <div class="icon">
@@ -1605,16 +1681,19 @@
     <div class="day reveal">
       <div class="day-num"><span class="label">Day One</span><span class="num">01</span></div>
       <div class="day-body">
-        <h3>Arrival, Relaxation &amp; Welcome Yoga</h3>
-        <p>Arrive at Ngurah Rai International Airport and be privately transferred to The Kastara Resort &amp; Spa, perched amidst lush greenery and serene rice terraces.</p>
-        <p>Settle into your tranquil surroundings, then ease into the journey with a gentle yoga session guided by Dayana Solano. As evening falls, an intimate welcome dinner in a stunning natural setting begins your time together.</p>
+        <h3>Arrival, Relaxation &amp; Yoga Class</h3>
+        <p>Arrive at Ngurah Rai International Airport and be privately transferred to <strong>SereS Springs Resort &amp; Spa | 5-Star</strong>, perched amidst lush greenery and serene rice terraces.</p>
+        <p>Settle into your tranquil surroundings, then ease into the journey with a gentle yoga class guided by Dayana Solano. As evening falls, an intimate welcome dinner in a stunning natural setting begins your time together.</p>
         <div class="day-tags">
           <span class="tag">Private transfer</span>
-          <span class="tag">Welcome yoga</span>
+          <span class="tag">Yoga class</span>
           <span class="tag">Welcome dinner</span>
         </div>
       </div>
-      <div class="day-image" style="background-image: url('https://images.unsplash.com/photo-1539367628448-4bc5c9d171c8?w=600&q=80');"></div>
+      <div class="day-images">
+        <div class="big" style="background-image: url('images/day-1-big.jpg');"></div>
+        <div class="small tr" style="background-image: url('images/day-1-small.jpg');"></div>
+      </div>
     </div>
 
     <div class="day reveal">
@@ -1624,75 +1703,95 @@
         <p>Morning yoga and a curated breakfast open a day devoted to Bali's cultural heart. Take part in a graceful flower opening ceremony, then learn the delicate art of weaving Canang Sari — the island's daily offering of gratitude and devotion.</p>
         <p>Afternoon leisure along Jalan Goutama for artisanal souvenirs, and at dusk, an enchanting Legong dance performance at the Ubud Water Palace — Balinese artistry at its most luminous.</p>
         <div class="day-tags">
-          <span class="tag">Flower ceremony</span>
-          <span class="tag">Canang Sari</span>
-          <span class="tag">Legong dance</span>
+          <span class="tag">Morning Yoga</span>
+          <span class="tag">Water Temple Ubud</span>
         </div>
       </div>
-      <div class="day-image round" style="background-image: url('https://images.unsplash.com/photo-1604881744660-a45b1ddff3a8?w=600&q=80');"></div>
+      <div class="day-images round">
+        <div class="big" style="background-image: url('images/day-2-big.png');"></div>
+        <div class="small bl" style="background-image: url('images/day-2-small.png');"></div>
+      </div>
     </div>
 
     <div class="day reveal">
       <div class="day-num"><span class="label">Day Three</span><span class="num">03</span></div>
       <div class="day-body">
-        <h3>Yoga &amp; The Art of Water Healing</h3>
-        <p>A revitalizing morning practice followed by an indulgent floating breakfast. The day unfolds as a healing journey through Bali's sacred waters: a traditional Melukat purification, learning the spiritual essence of Tridatu — to receive, release, and preserve energy.</p>
-        <p>Continue to the enchanting Uma Anyar Waterfall for guided meditation, with a possible visit to Poh Gading, a secluded hidden gem. Afternoon: a 60-minute Balinese massage at the elegant Green Tara Spa, followed by an elevated group dinner.</p>
+        <h3>Sacred Waters, Rice Terraces &amp; Elevated Indulgence</h3>
+        <p>A revitalizing morning yoga practice followed by an indulgent breakfast sets the tone for a deeply nourishing day. The journey continues through Bali's sacred waters with a traditional Melukat purification ritual at the enchanting Griya Beji Waterfall — a spiritual cleansing ceremony rooted in Balinese tradition. Here, you'll explore the meaning of Tridatu: the balance of receiving, releasing, and preserving energy. The experience deepens with a guided meditation while contemplating the soothing sounds and beauty of the waterfall surroundings.</p>
+        <p>In the afternoon, enjoy a guided walk through the iconic Tegallalang Rice Terraces, a UNESCO-recognized landscape shaped by centuries of traditional Balinese irrigation systems. Take a relaxing break at the renowned Tis Café, surrounded by breathtaking panoramic views over the terraces, before experiencing the famous Bali Swing soaring high above the lush rice fields. The adventure continues with a curated flying dress photoshoot — including professional photos and videos to capture the magic of the moment.</p>
+        <p>To complete the day, unwind with a luxurious 60-minute Balinese massage at the elegant Green Tara Spa, followed by a beautifully curated elevated group dinner shared together under the Bali evening atmosphere.</p>
         <div class="day-tags">
-          <span class="tag">Floating breakfast</span>
+          <span class="tag">Morning Yoga</span>
           <span class="tag">Melukat ritual</span>
           <span class="tag">Waterfall meditation</span>
+          <span class="tag">Tegallalang</span>
+          <span class="tag">Bali Swing</span>
           <span class="tag">Balinese massage</span>
         </div>
       </div>
-      <div class="day-image" style="background-image: url('https://images.unsplash.com/photo-1518002171953-a080ee817e1f?w=600&q=80');"></div>
+      <div class="day-images">
+        <div class="big" style="background-image: url('images/day-3-big.png');"></div>
+        <div class="small tr" style="background-image: url('images/day-3-small.png');"></div>
+      </div>
     </div>
 
     <div class="day reveal">
       <div class="day-num"><span class="label">Day Four</span><span class="num">04</span></div>
       <div class="day-body">
-        <h3>Leisure &amp; Optional East Bali Discovery</h3>
-        <p>A nourishing breakfast then a day at leisure — or join an optional curated journey through East Bali. Begin at Lempuyang Temple, home to the iconic Gates of Heaven and breathtaking views of Mount Agung.</p>
-        <p>Continue to Tirta Gangga, a former royal water palace of fountains and sacred pools, then close at Blue Lagoon Beach — a peaceful, secluded bay with crystal-clear water for swimming or quiet reflection.</p>
+        <h3>East Bali Discovery</h3>
+        <p>A nourishing breakfast before departing on a curated journey through the enchanting landscapes of East Bali. Begin at the majestic <strong>Lempuyang Temple</strong>, home to the iconic Gates of Heaven and breathtaking panoramic views of Mount Agung.</p>
+        <p>Continue to <strong>Tirta Gangga</strong>, the former royal water palace renowned for its elegant fountains, lush gardens, and sacred pools. The experience concludes at the hidden paradise of <strong>Blue Lagoon Beach</strong> — a peaceful secluded bay with crystal-clear waters, perfect for swimming, snorkeling, or simply enjoying a moment of quiet reflection.</p>
+        <p>Return to the villa to close the day with a grounding sunset yoga practice designed to restore body and mind after a day of exploration. The evening continues with a beautifully curated elevated group dinner, sharing meaningful conversations and unforgettable moments under the magical Bali night atmosphere.</p>
         <div class="day-tags">
-          <span class="tag">Optional excursion</span>
           <span class="tag">Lempuyang Temple</span>
           <span class="tag">Tirta Gangga</span>
-          <span class="tag">Blue Lagoon</span>
+          <span class="tag">Blue Lagoon Snorkeling</span>
+          <span class="tag">Evening Yoga</span>
         </div>
       </div>
-      <div class="day-image round" style="background-image: url('https://images.unsplash.com/photo-1555400038-63f5ba517a47?w=600&q=80');"></div>
+      <div class="day-images round">
+        <div class="big" style="background-image: url('images/day-4-big.jpg');"></div>
+        <div class="small bl" style="background-image: url('images/day-4-small.png');"></div>
+      </div>
     </div>
 
     <div class="day reveal">
       <div class="day-num"><span class="label">Day Five</span><span class="num">05</span></div>
       <div class="day-body">
-        <h3>Rice Terraces &amp; Elevated Indulgence</h3>
-        <p>A final uplifting yoga session, then a guided walk through the iconic Tegallalang Rice Terraces — a UNESCO-recognized landscape shaped by centuries of traditional irrigation.</p>
-        <p>Lunch at the renowned Tis Café with panoramic terrace views, then the iconic Bali Swing soaring above the rice fields, and a curated flying-dress photoshoot — photos and videos included. Close the day with a beautifully curated group dinner.</p>
+        <h3>Leisure &amp; Optional North Bali Discovery</h3>
+        <p>Our journey through the North of Bali begins with a visit to the iconic <strong>Pura Ulun Danu Beratan</strong>, a beautiful water temple set on the shores of Lake Beratan, surrounded by mountains and a peaceful atmosphere. On the way, we'll stop at a scenic viewpoint with the lake and mountains in the background — the perfect setting for elegant photos.</p>
+        <p>We then continue to the hidden <strong>Banyumala Waterfall</strong>, a stunning twin waterfall immersed in nature, ideal for a refreshing and magical moment. For lunch, we head to a hanging-style restaurant overlooking the breathtaking <strong>Sekumpul Waterfall</strong>, the highest waterfall in Bali — a truly unforgettable view.</p>
+        <p>On the way back, we'll enjoy sunset at the <strong>Jatiluwih Rice Terraces</strong>, before returning to Ubud for dinner.</p>
         <div class="day-tags">
-          <span class="tag">Tegallalang Terraces</span>
-          <span class="tag">Tis Café</span>
-          <span class="tag">Bali Swing</span>
-          <span class="tag">Flying-dress shoot</span>
+          <span class="tag">Pura Ulun Danu Beratan Temple</span>
+          <span class="tag">Banyumala Waterfall</span>
+          <span class="tag">Hanging Restaurant Sekumpul</span>
+          <span class="tag">Jatiluwih Rice Terraces</span>
         </div>
       </div>
-      <div class="day-image" style="background-image: url('https://images.unsplash.com/photo-1604999565976-8913ad2ddb7c?w=600&q=80');"></div>
+      <div class="day-images">
+        <div class="big" style="background-image: url('images/day-5-big.png');"></div>
+        <div class="small tr" style="background-image: url('images/day-5-small.png');"></div>
+      </div>
     </div>
 
     <div class="day reveal">
       <div class="day-num"><span class="label">Day Six</span><span class="num">06</span></div>
       <div class="day-body">
         <h3>Closing Ritual, Flowers &amp; Reflections</h3>
-        <p>Begin your final day with gentle yoga, followed by a beautiful flower closing ceremony — a guided moment to honor the experiences lived, the connections created, and the growth embraced together.</p>
-        <p>A nourishing breakfast in the resort's peaceful surroundings, check-out, and a private transfer to the airport. Depart with cherished memories, a sense of renewal, and the essence of Bali quietly carried within.</p>
+        <p>Begin your final day with gentle yoga, followed by a special <strong>sound healing</strong> session and a beautiful flower closing ceremony — a guided moment to honor the experiences lived, the connections created, and the growth embraced together.</p>
+        <p>A floating breakfast in the resort's peaceful surroundings, check-out, and a private transfer to the airport. Depart with cherished memories, a sense of renewal, and the essence of Bali quietly carried within.</p>
         <div class="day-tags">
           <span class="tag">Closing ceremony</span>
-          <span class="tag">Reflection</span>
+          <span class="tag">Sound Healing</span>
+          <span class="tag">Floating Breakfast</span>
           <span class="tag">Private transfer</span>
         </div>
       </div>
-      <div class="day-image round" style="background-image: url('https://images.unsplash.com/photo-1545579133-99bb5ab189bd?w=600&q=80');"></div>
+      <div class="day-images round">
+        <div class="big" style="background-image: url('images/day-6-big.png');"></div>
+        <div class="small bl" style="background-image: url('images/day-6-small.png');"></div>
+      </div>
     </div>
   </div>
 </section>
@@ -1712,16 +1811,17 @@
       <div class="inc-col">
         <h4><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M5 13l4 4L19 7"/></svg> What's Included</h4>
         <ul>
-          <li>5 nights at the 5-star Kastara Resort &amp; Spa, Ubud</li>
+          <li>5 nights at the 5-star Seres Springs Resort &amp; Spa, Ubud</li>
           <li>5 curated breakfasts and 5 elegant dinners</li>
           <li>Private driver and round-trip airport transfers</li>
-          <li>Daily yoga, meditation, and breathwork with Dayana Solano</li>
+          <li>Daily yoga, meditation, breathwork, and sound healing with Dayana Solano</li>
           <li>Flower opening &amp; closing ceremonies and Canang Sari workshop</li>
           <li>Melukat purification ritual and waterfall meditation</li>
           <li>60-minute Balinese massage at Green Tara Spa</li>
           <li>Tegallalang rice terraces walk &amp; Bali Swing experience</li>
           <li>Flying-dress photoshoot — photos and videos included</li>
           <li>Legong dance performance at the Ubud Water Palace</li>
+          <li><strong>All retreat activities</strong> outlined in the itinerary</li>
           <li>Full host support throughout the journey</li>
         </ul>
       </div>
@@ -1732,7 +1832,8 @@
           <li>Travel and health insurance</li>
           <li>Visa fees</li>
           <li>Meals not specified in the itinerary</li>
-          <li>Optional excursions (e.g. East Bali discovery)</li>
+          <li>Optional excursions (e.g. North Bali discovery)</li>
+          <li>Personal activities outside the itinerary</li>
           <li>Personal expenses and gratuities</li>
         </ul>
       </div>
@@ -1758,7 +1859,7 @@
             <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M21 16v-2l-8-5V3.5a1.5 1.5 0 0 0-3 0V9l-8 5v2l8-2.5V19l-2 1.5V22l3.5-1 3.5 1v-1.5L13 19v-5.5l8 2.5z"/></svg>
             Your arrival airport
           </h3>
-          <p>You'll fly into <strong>Ngurah Rai International Airport</strong> in Denpasar, Bali. A private transfer will be arranged from the airport directly to The Kastara Resort &amp; Spa.</p>
+          <p>You'll fly into <strong>Ngurah Rai International Airport</strong> in Denpasar, Bali. A private transfer will be arranged from the airport directly to the 5-star Seres Springs Resort &amp; Spa.</p>
           <span class="airport-tag">DPS · Ngurah Rai International, Denpasar</span>
         </div>
 
@@ -1964,7 +2065,7 @@
 
     <div class="pricing-card reveal">
       <div class="pricing-top">
-        <span class="eyebrow">Bali · Six Days · 12 Spots</span>
+        <span class="eyebrow">17–22 July · Six Days · 12 Spots</span>
         <h3>A return to <em>stillness,</em> in Ubud.</h3>
         <div class="price-display">
           <div class="from">Starting from</div>
@@ -2012,7 +2113,7 @@
           <ul>
             <li><strong>Reservation:</strong> Deposit due to confirm your place.</li>
             <li><strong>Final balance:</strong> Up to 45 days before departure.</li>
-            <li><strong>Minimum group:</strong> 8 participants — confirmed 30 days prior.</li>
+            <li><strong>Minimum group:</strong> 8 participants — confirmed 20 days prior.</li>
             <li><strong>Refunds:</strong> Processed within 30–60 working days when applicable.</li>
           </ul>
         </div>
@@ -2031,7 +2132,7 @@
         </div>
       </div>
 
-      <p class="pricing-note">A 25% non-refundable deposit is required to secure your spot (refundable only if the trip is cancelled by the organizer). This trip requires a minimum of 8 participants — if not reached 30 days before departure, the trip will be cancelled and a 90% refund issued (10% retained for processing). In case of unforeseen weather or government restrictions, certain activities may be modified or replaced. Travel and health insurance are strongly recommended and are the responsibility of each participant.</p>
+      <p class="pricing-note">A 25% non-refundable deposit is required to secure your spot (refundable only if the trip is cancelled by the organizer). This trip requires a minimum of 8 participants — if not reached 20 days before departure, the trip will be cancelled and a 90% refund issued (10% retained for processing). In case of unforeseen weather or government restrictions, certain activities may be modified or replaced. Travel and health insurance are strongly recommended and are the responsibility of each participant.</p>
     </div>
 
     <!-- ============ WAITLIST FORM ============ -->
@@ -2057,11 +2158,11 @@
 
 <!-- ============ FINAL CTA ============ -->
 <section class="final-cta" id="reserve">
-  <span class="eyebrow">Limited to 12 travelers</span>
+  <span class="eyebrow">17–22 July · Limited to 12 travelers</span>
   <h2>Your seat at the <em>jungle's edge</em><br />is waiting.</h2>
   <p>Reserve your place with a 25% deposit. We'll be in touch within 24 hours to begin your journey to Ubud.</p>
   <a href="#pricing" class="btn">Reserve Your Spot →</a>
-  <div class="deposit-pill">● 25% Deposit · Stripe, Bank Transfer or Digital Payment</div>
+  <div class="deposit-pill">● Stripe, Bank Transfer or Digital Payment</div>
 </section>
 
 <!-- ============ FOOTER ============ -->
@@ -2087,13 +2188,13 @@
       <ul>
         <li><a href="https://wa.me/34931282688" target="_blank" rel="noopener">WhatsApp · +34 931 28 26 88</a></li>
         <li><a href="#">@dayanasolanob</a></li>
-        <li><a href="#">@sabriyoga.experience</a></li>
+        <li><a href="#">@sabriyoga</a></li>
       </ul>
     </div>
   </div>
   <div class="footer-bottom">
     <span>© 2026 Sabriyoga Experience · All rights reserved</span>
-    <span>Bali, Indonesia · Nov 2026</span>
+    <span>Bali, Indonesia · 17–22 July 2026</span>
   </div>
 </footer>
 
