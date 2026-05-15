@@ -143,9 +143,84 @@
   }
   nav .reserve:hover { background: var(--olive); transform: translateY(-1px); }
 
+  /* Hamburger button (hidden on desktop) */
+  .nav-toggle {
+    display: none;
+    background: transparent;
+    border: 0;
+    cursor: pointer;
+    padding: 0.5rem;
+    margin-left: 0.5rem;
+    z-index: 110;
+  }
+  .nav-toggle span {
+    display: block;
+    width: 22px;
+    height: 2px;
+    background: var(--ink);
+    margin: 5px 0;
+    transition: transform 0.3s ease, opacity 0.2s ease;
+    border-radius: 2px;
+  }
+  body.menu-open .nav-toggle span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+  body.menu-open .nav-toggle span:nth-child(2) { opacity: 0; }
+  body.menu-open .nav-toggle span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+  /* Mobile menu overlay */
+  .mobile-menu {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: var(--ivory);
+    z-index: 99;
+    padding: 5.5rem 2rem 2rem;
+    overflow-y: auto;
+    opacity: 0;
+    transform: translateY(-12px);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    pointer-events: none;
+  }
+  body.menu-open .mobile-menu {
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
+  }
+  .mobile-menu ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+  }
+  .mobile-menu ul a {
+    display: block;
+    font-family: 'Fraunces', serif;
+    font-size: 1.5rem;
+    color: var(--ink);
+    text-decoration: none;
+    padding: 0.85rem 0;
+    border-bottom: 1px solid rgba(231, 220, 196, 0.7);
+    letter-spacing: -0.01em;
+  }
+  .mobile-menu ul a:hover { color: var(--moss); }
+  .mobile-menu .reserve-mobile {
+    display: block;
+    text-align: center;
+    background: var(--moss);
+    color: #fff;
+    padding: 1rem 2rem;
+    border-radius: 999px;
+    text-decoration: none;
+    font-size: 1rem;
+    letter-spacing: 0.04em;
+    margin-top: 2rem;
+  }
+
   @media (max-width: 1240px) {
     nav { padding: 1rem 1.5rem; }
     nav ul { display: none; }
+    .nav-toggle { display: block; }
+    .mobile-menu { display: block; }
+    nav .reserve { display: none; }
   }
 
   /* ============ FLOATING WHATSAPP CTA ============ */
@@ -232,22 +307,32 @@
   .hero-text .retreat-pill {
     display: inline-flex;
     align-items: center;
-    gap: 0.5rem;
+    gap: 0.7rem;
     background: var(--cream);
     border: 1px solid var(--line);
-    padding: 0.5rem 1rem;
+    padding: 0.85rem 1.5rem;
     border-radius: 999px;
-    font-size: 0.78rem;
-    color: var(--ink-soft);
-    letter-spacing: 0.04em;
-    margin-bottom: 1.6rem;
+    font-size: 1.05rem;
+    font-family: 'Fraunces', serif;
+    font-weight: 400;
+    color: var(--olive);
+    letter-spacing: 0.02em;
+    margin-bottom: 1.8rem;
+  }
+  .hero-text .retreat-pill em {
+    font-style: italic;
+    color: var(--moss);
+    font-weight: 500;
   }
   .hero-text .retreat-pill::before {
     content: '';
-    width: 6px;
-    height: 6px;
+    width: 8px;
+    height: 8px;
     background: var(--moss);
     border-radius: 50%;
+  }
+  @media (max-width: 880px) {
+    .hero-text .retreat-pill { font-size: 0.95rem; padding: 0.7rem 1.2rem; }
   }
   .hero h1 {
     font-size: clamp(2.6rem, 5.5vw, 4.6rem);
@@ -632,6 +717,58 @@
     gap: 1.75rem;
     margin-top: 3rem;
   }
+
+  /* Early bird banner */
+  .early-bird-banner {
+    background: linear-gradient(135deg, var(--moss), var(--olive));
+    color: #fff;
+    border-radius: 12px;
+    padding: 1.25rem 1.75rem;
+    margin: 2.5rem 0 0;
+    box-shadow: 0 20px 40px -20px rgba(79, 98, 72, 0.4);
+  }
+  .eb-inner {
+    display: flex;
+    align-items: center;
+    gap: 1.1rem;
+  }
+  .eb-icon {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.15);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--sand);
+    flex-shrink: 0;
+  }
+  .eb-text {
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+  }
+  .eb-text strong {
+    font-family: 'Fraunces', serif;
+    font-size: 1.2rem;
+    font-weight: 500;
+    letter-spacing: -0.01em;
+  }
+  .eb-text span {
+    font-size: 0.92rem;
+    color: rgba(255, 255, 255, 0.85);
+  }
+  .eb-text span em {
+    font-style: italic;
+    color: var(--sand);
+    font-weight: 500;
+  }
+  @media (max-width: 880px) {
+    .early-bird-banner { padding: 1rem 1.25rem; }
+    .eb-inner { gap: 0.85rem; }
+    .eb-text strong { font-size: 1rem; }
+    .eb-text span { font-size: 0.85rem; }
+  }
   .room-card {
     background: #fff;
     border-radius: 6px;
@@ -764,6 +901,62 @@
     font-family: 'Inter Tight', sans-serif;
     margin-left: 0.3rem;
   }
+
+  /* Early bird pricing */
+  .early-bird-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    background: var(--moss);
+    color: #fff;
+    padding: 0.3rem 0.7rem;
+    border-radius: 999px;
+    font-size: 0.68rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    font-weight: 500;
+    margin-bottom: 0.6rem;
+  }
+  .early-bird-badge::before {
+    content: '';
+    width: 6px;
+    height: 6px;
+    background: var(--sand);
+    border-radius: 50%;
+    animation: pulse 2s ease-in-out infinite;
+  }
+  @keyframes pulse {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.6; transform: scale(1.4); }
+  }
+  .room-price-row {
+    display: flex;
+    align-items: baseline;
+    gap: 0.7rem;
+    flex-wrap: wrap;
+  }
+  .price-regular {
+    font-family: 'Fraunces', serif;
+    font-size: 1.15rem;
+    color: rgba(43, 42, 37, 0.45);
+    text-decoration: line-through;
+    text-decoration-thickness: 1px;
+  }
+  .price-savings {
+    font-size: 0.78rem;
+    color: var(--moss);
+    font-style: italic;
+    margin-top: 0.35rem;
+    letter-spacing: 0.01em;
+  }
+  .price-deadline-note {
+    font-size: 0.7rem;
+    color: rgba(43, 42, 37, 0.55);
+    margin-top: 0.5rem;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+  .price-deadline-note strong { color: var(--olive); font-weight: 500; }
   .room-cta {
     margin-top: auto;
     display: flex;
@@ -806,6 +999,52 @@
   @media (max-width: 980px) {
     .rooms-grid { grid-template-columns: 1fr; gap: 1.25rem; }
     .room-card { max-width: 480px; margin: 0 auto; width: 100%; }
+  }
+
+  /* Sold out state */
+  .room-card.sold-out {
+    position: relative;
+  }
+  .room-card.sold-out .room-gallery .main {
+    filter: grayscale(0.4) brightness(0.85);
+  }
+  .room-card.sold-out::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: rgba(43, 42, 37, 0.04);
+    pointer-events: none;
+    border-radius: 6px;
+  }
+  .sold-out-badge {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) rotate(-6deg);
+    background: var(--ink);
+    color: #fff;
+    padding: 0.7rem 2rem;
+    font-family: 'Fraunces', serif;
+    font-size: 1.6rem;
+    font-weight: 500;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    z-index: 4;
+    border: 2px solid #fff;
+    box-shadow: 0 10px 30px rgba(43, 42, 37, 0.4);
+    white-space: nowrap;
+  }
+  .room-card.sold-out .btn-reserve {
+    background: rgba(43, 42, 37, 0.25);
+    pointer-events: none;
+    cursor: not-allowed;
+  }
+  .waitlist-note {
+    font-size: 0.78rem;
+    color: rgba(43, 42, 37, 0.55);
+    text-align: center;
+    margin-top: 0.4rem;
+    font-style: italic;
   }
 
   /* ============ ITINERARY ============ */
@@ -1357,9 +1596,12 @@
     background: white;
     border: 1px solid var(--line);
     border-radius: 18px;
-    padding: 0;
+    padding: 2.5rem;
     overflow: hidden;
     box-shadow: 0 30px 70px -30px rgba(43, 42, 37, 0.2);
+  }
+  @media (max-width: 880px) {
+    .pricing-card { padding: 1.75rem 1.25rem; }
   }
   .pricing-top {
     padding: 3rem;
@@ -1619,6 +1861,17 @@
     text-align: center;
   }
   .final-cta .eyebrow { color: var(--sand); display: inline-block; margin-bottom: 1.6rem; }
+  .final-cta .dates-big {
+    display: block;
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-weight: 300;
+    font-size: clamp(2.2rem, 4.5vw, 3.4rem);
+    color: var(--sand);
+    letter-spacing: 0.01em;
+    margin-bottom: 1.8rem;
+    line-height: 1.1;
+  }
   .final-cta h2 {
     font-family: 'Fraunces', serif;
     font-weight: 300;
@@ -1740,8 +1993,26 @@
     <li><a href="#faq">FAQ</a></li>
     <li><a href="#pricing">Pricing</a></li>
   </ul>
-  <a href="#pricing" class="reserve">Reserve a Spot</a>
+  <a href="#rooms" class="reserve">Reserve a Spot</a>
+  <button class="nav-toggle" aria-label="Open menu" aria-expanded="false" onclick="document.body.classList.toggle('menu-open'); this.setAttribute('aria-expanded', document.body.classList.contains('menu-open'))">
+    <span></span><span></span><span></span>
+  </button>
 </nav>
+
+<!-- ============ MOBILE MENU DRAWER ============ -->
+<div class="mobile-menu" id="mobileMenu">
+  <ul>
+    <li><a href="#hero" onclick="document.body.classList.remove('menu-open')">Dayana Solano — Your Host</a></li>
+    <li><a href="#about" onclick="document.body.classList.remove('menu-open')">Experience</a></li>
+    <li><a href="#rooms" onclick="document.body.classList.remove('menu-open')">Rooms</a></li>
+    <li><a href="#itinerary" onclick="document.body.classList.remove('menu-open')">Itinerary</a></li>
+    <li><a href="#logistics" onclick="document.body.classList.remove('menu-open')">Flights</a></li>
+    <li><a href="#sabrina" onclick="document.body.classList.remove('menu-open')">Group Leader</a></li>
+    <li><a href="#faq" onclick="document.body.classList.remove('menu-open')">FAQ</a></li>
+    <li><a href="#pricing" onclick="document.body.classList.remove('menu-open')">Pricing</a></li>
+  </ul>
+  <a href="#rooms" class="reserve-mobile" onclick="document.body.classList.remove('menu-open')">Reserve a Spot</a>
+</div>
 
 <!-- ============ FLOATING WHATSAPP CTA ============ -->
 <a href="https://wa.me/34931282688?text=Hi%2C%20I%27d%20love%20to%20learn%20more%20about%20the%20Bali%20retreat." class="whatsapp-fab" target="_blank" rel="noopener" aria-label="Chat with Sabriyoga Experience Team">
@@ -1756,7 +2027,7 @@
 <!-- ============ HERO — DAYANA ============ -->
 <section class="hero" id="hero">
   <div class="hero-text">
-    <span class="retreat-pill">Bali · Ubud · 17–22 July</span>
+    <span class="retreat-pill">Bali · Ubud · <em>17–22 July 2026</em></span>
     <h1 class="display">Travel to Bali, awaken your essence with <em>Dayana Solano.</em></h1>
     <p class="lead">Dayana Solano is a yoga teacher, nutritionist, and <strong>wellness expert</strong> dedicated to helping people reconnect with their body, energy, and inner clarity.</p>
     <p class="lead">With over <strong>15 years of experience</strong> and more than <strong>1,500 hours of registered training</strong> across yoga, Ayurveda, and sound healing, her approach blends ancient practices with modern understanding of the body and nervous system.</p>
@@ -1776,7 +2047,7 @@
     </div>
 
     <div class="hero-cta-row">
-      <a href="#pricing" class="hero-cta">Reserve Your Place <span>→</span></a>
+      <a href="#rooms" class="hero-cta">Reserve Your Place <span>→</span></a>
       <a href="#itinerary" class="hero-cta-secondary">View Itinerary</a>
     </div>
 
@@ -1876,7 +2147,7 @@
       <div>
         <h2 class="display">Quiet luxury, woven with <em>devotion.</em></h2>
         <p class="hotel-link-line">Hosted at <a href="https://www.sereshotelsresorts.com/" target="_blank" rel="noopener" class="hotel-link">SereS Springs Resort &amp; Spa <span class="arrow">↗</span></a></p>
-        <p>Five nights in a 5-star sanctuary perched on a jungle cliff, with an infinity pool over the rice terraces. Curated tours, sacred rituals, and gentle daily practice — designed to ease the body and open the heart.</p>
+        <p>Five nights in a 5-star sanctuary perched on a jungle cliff, with an infinity pool overlooking the jungle. Curated tours, sacred rituals, and gentle daily practice — designed to ease the body and open the heart.</p>
       </div>
     </div>
 
@@ -1893,7 +2164,7 @@
           <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 2L4 12h6v8h4v-8h6L12 2z"/></svg>
         </div>
         <h3>Refined sanctuary</h3>
-        <p>Five nights at the 5-star Seres Springs Resort & Spa, Ubud — daily breakfast, infinity pool over the jungle, private driver, and seamless airport transfers.</p>
+        <p>Five nights at the 5-star Seres Springs Resort & Spa, Ubud — daily breakfast and dinners, infinity pool overlooking the jungle, private driver, and seamless airport transfers.</p>
       </div>
       <div class="feature-card reveal">
         <div class="icon">
@@ -1924,12 +2195,25 @@
       </div>
     </div>
 
+    <!-- Early-bird banner -->
+    <div class="early-bird-banner reveal">
+      <div class="eb-inner">
+        <div class="eb-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 2L4 12h6v8h4v-8h6L12 2z"/></svg>
+        </div>
+        <div class="eb-text">
+          <strong>Early Bird Offer — save €270 per person</strong>
+          <span>Reserve your room before <em>22 May 2026</em> to secure the early-bird rate.</span>
+        </div>
+      </div>
+    </div>
+
     <div class="rooms-grid">
 
       <!-- SINGLE ROOM (for couples sharing) -->
       <div class="room-card reveal">
         <div class="room-gallery">
-          <div class="room-tag">For couples · 2 guests</div>
+          <div class="room-tag">For singles &amp; couples</div>
           <div class="main" style="background-image: url('images/room-single-1.jpg');"></div>
           <div class="room-thumbs">
             <div class="room-thumb" style="background-image: url('images/room-single-2.jpg');" onclick="document.querySelector('#single-main').style.backgroundImage=this.style.backgroundImage"></div>
@@ -1937,34 +2221,31 @@
         </div>
         <div class="room-body">
           <h3>Single Room</h3>
-          <p class="room-desc">A serene retreat for two, with a king-size bed, traditional Balinese accents and valley or rice-terrace views. Refined comfort with all the soul of Bali.</p>
+          <p class="room-desc">A serene retreat suitable for solo travelers or couples sharing, with a king-size bed and traditional Balinese accents. Refined comfort with all the soul of Bali.</p>
 
           <div class="room-specs">
             <div class="room-spec">
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M2 12h20M4 8v8M20 8v8M6 12V8h12v4"/></svg>
-              <span><strong>Bed:</strong> 1 king-size bed (2 guests sharing)</span>
-            </div>
-            <div class="room-spec">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 3h18v18H3z"/><path d="M9 3v18M3 9h18"/></svg>
-              <span><strong>Size:</strong> — m²</span>
-            </div>
-            <div class="room-spec">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="9"/><path d="M2 12h20M12 2c3 3 3 17 0 20M12 2c-3 3-3 17 0 20"/></svg>
-              <span><strong>View:</strong> Rice terrace / valley</span>
+              <span><strong>Bed:</strong> 1 king-size bed (singles or couples sharing)</span>
             </div>
             <div class="room-spec">
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 2l2.4 7.4H22l-6.2 4.5 2.4 7.4L12 16.8 5.8 21.3l2.4-7.4L2 9.4h7.6z"/></svg>
-              <span><strong>Includes:</strong> Daily breakfast, A/C, balcony, free Wi-Fi</span>
+              <span><strong>Includes:</strong> Daily breakfast and dinners, A/C, balcony, free Wi-Fi</span>
             </div>
           </div>
 
           <div class="room-price-block">
+            <span class="early-bird-badge">Early Bird · until 22 May</span>
             <div class="room-price-label">Total retreat package</div>
-            <div class="room-price">€ —<span class="room-price-suffix">per person</span></div>
+            <div class="room-price-row">
+              <span class="room-price">€1,480<span class="room-price-suffix">per person</span></span>
+              <span class="price-regular">€1,750</span>
+            </div>
+            <div class="price-savings">Save €270 — reserve before 22 May</div>
           </div>
 
           <div class="room-cta">
-            <a href="#" class="btn-reserve">Reserve this room</a>
+            <a href="https://buy.stripe.com/aFa9ATdqz2V39eZ4HB5Ne01" target="_blank" rel="noopener" class="btn-reserve">Reserve this room</a>
             <a href="https://wa.me/34931282688?text=Hi%20Sabrina%2C%20I%27d%20like%20to%20book%20the%20Single%20Room%20for%20the%20Bali%20retreat" target="_blank" rel="noopener" class="btn-room-whatsapp">or chat on WhatsApp</a>
           </div>
         </div>
@@ -1981,7 +2262,7 @@
         </div>
         <div class="room-body">
           <h3>Double Room</h3>
-          <p class="room-desc">Two twin beds with a private balcony overlooking the resort's tropical gardens or rice fields. Ideal for friends traveling together who prefer their own space at rest.</p>
+          <p class="room-desc">Two twin beds with a private balcony overlooking the resort's lush tropical gardens. Ideal for friends traveling together who prefer their own space at rest.</p>
 
           <div class="room-specs">
             <div class="room-spec">
@@ -1989,36 +2270,34 @@
               <span><strong>Bed:</strong> 2 twin beds</span>
             </div>
             <div class="room-spec">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 3h18v18H3z"/><path d="M9 3v18M3 9h18"/></svg>
-              <span><strong>Size:</strong> — m²</span>
-            </div>
-            <div class="room-spec">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="9"/><path d="M2 12h20M12 2c3 3 3 17 0 20M12 2c-3 3-3 17 0 20"/></svg>
-              <span><strong>View:</strong> Rice terrace / garden</span>
-            </div>
-            <div class="room-spec">
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 2l2.4 7.4H22l-6.2 4.5 2.4 7.4L12 16.8 5.8 21.3l2.4-7.4L2 9.4h7.6z"/></svg>
-              <span><strong>Includes:</strong> Daily breakfast, A/C, balcony, free Wi-Fi</span>
+              <span><strong>Includes:</strong> Daily breakfast and dinners, A/C, balcony, free Wi-Fi</span>
             </div>
           </div>
 
           <div class="room-price-block">
+            <span class="early-bird-badge">Early Bird · until 22 May</span>
             <div class="room-price-label">Total retreat package</div>
-            <div class="room-price">€ —<span class="room-price-suffix">per person</span></div>
+            <div class="room-price-row">
+              <span class="room-price">€1,080<span class="room-price-suffix">per person</span></span>
+              <span class="price-regular">€1,350</span>
+            </div>
+            <div class="price-savings">Save €270 — reserve before 22 May</div>
           </div>
 
           <div class="room-cta">
-            <a href="#" class="btn-reserve">Reserve this room</a>
+            <a href="https://buy.stripe.com/00w6oH2LVeDLdvf4HB5Ne00" target="_blank" rel="noopener" class="btn-reserve">Reserve this room</a>
             <a href="https://wa.me/34931282688?text=Hi%20Sabrina%2C%20I%27d%20like%20to%20book%20the%20Double%20Room%20for%20the%20Bali%20retreat" target="_blank" rel="noopener" class="btn-room-whatsapp">or chat on WhatsApp</a>
           </div>
         </div>
       </div>
 
       <!-- VILLA -->
-      <div class="room-card reveal">
+      <div class="room-card sold-out reveal">
         <div class="room-gallery">
           <div class="room-tag">Private pool · 2 guests</div>
           <div class="main" style="background-image: url('images/room-villa-1.jpg');"></div>
+          <div class="sold-out-badge">Sold Out</div>
           <div class="room-thumbs">
             <div class="room-thumb" style="background-image: url('images/room-villa-2.jpg');"></div>
             <div class="room-thumb" style="background-image: url('images/room-villa-3.jpg');"></div>
@@ -2034,27 +2313,19 @@
               <span><strong>Bed:</strong> 1 king-size canopy bed</span>
             </div>
             <div class="room-spec">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 3h18v18H3z"/><path d="M9 3v18M3 9h18"/></svg>
-              <span><strong>Size:</strong> — m²</span>
-            </div>
-            <div class="room-spec">
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M2 12h20M4 16c0-2 2-2 4-2s4 0 4 2M12 14c2 0 4 0 4 2M16 16c2 0 4 0 4-2"/><path d="M6 8c0-2 2-3 4-3M14 5c2 0 4 1 4 3"/></svg>
               <span><strong>Includes:</strong> Private plunge pool, outdoor terrace, soaking tub</span>
             </div>
             <div class="room-spec">
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 2l2.4 7.4H22l-6.2 4.5 2.4 7.4L12 16.8 5.8 21.3l2.4-7.4L2 9.4h7.6z"/></svg>
-              <span><strong>Extras:</strong> Daily breakfast, butler-style service, jungle views</span>
+              <span><strong>Extras:</strong> Daily breakfast and dinners, jungle views</span>
             </div>
           </div>
 
-          <div class="room-price-block">
-            <div class="room-price-label">Total retreat package</div>
-            <div class="room-price">€ —<span class="room-price-suffix">per person</span></div>
-          </div>
-
           <div class="room-cta">
-            <a href="#" class="btn-reserve">Reserve this villa</a>
-            <a href="https://wa.me/34931282688?text=Hi%20Sabrina%2C%20I%27d%20like%20to%20book%20the%20Private%20Villa%20for%20the%20Bali%20retreat" target="_blank" rel="noopener" class="btn-room-whatsapp">or chat on WhatsApp</a>
+            <a class="btn-reserve">No longer available</a>
+            <a href="https://wa.me/34931282688?text=Hi%20Sabrina%2C%20I%27d%20like%20to%20be%20on%20the%20waitlist%20for%20the%20Private%20Villa" target="_blank" rel="noopener" class="btn-room-whatsapp">Join the waitlist</a>
+            <div class="waitlist-note">Contact us if a villa becomes available</div>
           </div>
         </div>
       </div>
@@ -2101,6 +2372,8 @@
         <div class="day-tags">
           <span class="tag">Morning Yoga</span>
           <span class="tag">Water Temple Ubud</span>
+          <span class="tag">Canang Sari</span>
+          <span class="tag">Legong Dance</span>
         </div>
       </div>
       <div class="day-images round">
@@ -2113,8 +2386,8 @@
       <div class="day-num"><span class="label">Day Three</span><span class="num">03</span></div>
       <div class="day-body">
         <h3>Sacred Waters, Rice Terraces &amp; Elevated Indulgence</h3>
-        <p>A revitalizing morning yoga practice followed by an indulgent breakfast sets the tone for a deeply nourishing day. The journey continues through Bali's sacred waters with a traditional Melukat purification ritual at the enchanting Griya Beji Waterfall — a spiritual cleansing ceremony rooted in Balinese tradition. Here, you'll explore the meaning of Tridatu: the balance of receiving, releasing, and preserving energy. The experience deepens with a guided meditation while contemplating the soothing sounds and beauty of the waterfall surroundings.</p>
-        <p>In the afternoon, enjoy a guided walk through the iconic Tegallalang Rice Terraces, a UNESCO-recognized landscape shaped by centuries of traditional Balinese irrigation systems. Take a relaxing break at the renowned Tis Café, surrounded by breathtaking panoramic views over the terraces, before experiencing the famous Bali Swing soaring high above the lush rice fields. The adventure continues with a curated flying dress photoshoot — including professional photos and videos to capture the magic of the moment.</p>
+        <p>A revitalizing morning yoga practice followed by an indulgent breakfast sets the tone for a deeply nourishing day. The journey continues through Bali's sacred waters with a traditional Melukat purification ritual at the enchanting Griya Beji Waterfall — a spiritual cleansing ceremony rooted in Balinese tradition. The experience deepens with a guided meditation while contemplating the soothing sounds and beauty of the waterfall surroundings.</p>
+        <p>In the afternoon, enjoy a guided walk through the iconic Tegallalang Rice Terraces. Take a relaxing break at the renowned Tis Café, surrounded by breathtaking panoramic views over the terraces, before experiencing the famous Bali Swing soaring high above the lush rice fields. The adventure continues with a curated flying dress photoshoot — including professional photos and videos to capture the magic of the moment.</p>
         <p>To complete the day, unwind with a luxurious 60-minute Balinese massage at the elegant Green Tara Spa, followed by a beautifully curated elevated group dinner shared together under the Bali evening atmosphere.</p>
         <div class="day-tags">
           <span class="tag">Morning Yoga</span>
@@ -2135,8 +2408,8 @@
       <div class="day-num"><span class="label">Day Four</span><span class="num">04</span></div>
       <div class="day-body">
         <h3>East Bali Discovery</h3>
-        <p>A nourishing breakfast before departing on a curated journey through the enchanting landscapes of East Bali. Begin at the majestic <strong>Lempuyang Temple</strong>, home to the iconic Gates of Heaven and breathtaking panoramic views of Mount Agung.</p>
-        <p>Continue to <strong>Tirta Gangga</strong>, the former royal water palace renowned for its elegant fountains, lush gardens, and sacred pools. The experience concludes at the hidden paradise of <strong>Blue Lagoon Beach</strong> — a peaceful secluded bay with crystal-clear waters, perfect for swimming, snorkeling, or simply enjoying a moment of quiet reflection.</p>
+        <p>A nourishing breakfast before departing on a curated journey through the enchanting landscapes of East Bali. Begin at the majestic Lempuyang Temple, home to the iconic Gates of Heaven and breathtaking panoramic views of Mount Agung.</p>
+        <p>Continue to Tirta Gangga, the former royal water palace renowned for its elegant fountains, lush gardens, and sacred pools. The experience concludes at the hidden paradise of Blue Lagoon Beach — a peaceful secluded bay with crystal-clear waters, perfect for swimming, snorkeling, or simply enjoying a moment of quiet reflection.</p>
         <p>Return to the villa to close the day with a grounding sunset yoga practice designed to restore body and mind after a day of exploration. The evening continues with a beautifully curated elevated group dinner, sharing meaningful conversations and unforgettable moments under the magical Bali night atmosphere.</p>
         <div class="day-tags">
           <span class="tag">Lempuyang Temple</span>
@@ -2155,9 +2428,9 @@
       <div class="day-num"><span class="label">Day Five</span><span class="num">05</span></div>
       <div class="day-body">
         <h3>Leisure &amp; Optional North Bali Discovery</h3>
-        <p>Our journey through the North of Bali begins with a visit to the iconic <strong>Pura Ulun Danu Beratan</strong>, a beautiful water temple set on the shores of Lake Beratan, surrounded by mountains and a peaceful atmosphere. On the way, we'll stop at a scenic viewpoint with the lake and mountains in the background — the perfect setting for elegant photos.</p>
-        <p>We then continue to the hidden <strong>Banyumala Waterfall</strong>, a stunning twin waterfall immersed in nature, ideal for a refreshing and magical moment. For lunch, we head to a hanging-style restaurant overlooking the breathtaking <strong>Sekumpul Waterfall</strong>, the highest waterfall in Bali — a truly unforgettable view.</p>
-        <p>On the way back, we'll enjoy sunset at the <strong>Jatiluwih Rice Terraces</strong>, before returning to Ubud for dinner.</p>
+        <p>Our journey through the North of Bali begins with a visit to the iconic Pura Ulun Danu Beratan, a beautiful water temple set on the shores of Lake Beratan, surrounded by mountains and a peaceful atmosphere. On the way, we'll stop at a scenic viewpoint with the lake and mountains in the background — the perfect setting for elegant photos.</p>
+        <p>We then continue to the hidden Banyumala Waterfall, a stunning twin waterfall immersed in nature, ideal for a refreshing and magical moment. For lunch, we head to a hanging-style restaurant overlooking the breathtaking Sekumpul Waterfall, the highest waterfall in Bali — a truly unforgettable view.</p>
+        <p>On the way back, we'll enjoy sunset at the Jatiluwih Rice Terraces, before returning to Ubud for dinner.</p>
         <div class="day-tags">
           <span class="tag">Pura Ulun Danu Beratan Temple</span>
           <span class="tag">Banyumala Waterfall</span>
@@ -2382,7 +2655,7 @@
     <div class="faq-grid">
       <details>
         <summary>What is the group size?</summary>
-        <p>Between 10 to 15 participants. This allows us to create a more personalized experience, adapting to your level and ensuring the right level of individual attention.</p>
+        <p>A minimum of 6 and up to 12 participants. This allows us to create a more personalized experience, adapting to your level and ensuring the right level of individual attention.</p>
       </details>
       <details>
         <summary>Will the host travel with us?</summary>
@@ -2454,26 +2727,12 @@
     <div class="section-head reveal">
       <span class="eyebrow">Pricing &amp; How to Book</span>
       <div>
-        <h2 class="display">Pricing &amp; how to <em>book your spot.</em></h2>
-        <p>Everything you need to know to confirm your place — booking process, payment structure, deadlines, and cancellation policy in one place.</p>
+        <h2 class="display">How to <em>book your spot.</em></h2>
+        <p>Pricing varies by room type — see the accommodation section above to choose your room and reserve directly. Here's everything else you need to know about the booking process, deadlines and cancellation policy.</p>
       </div>
     </div>
 
     <div class="pricing-card reveal">
-      <div class="pricing-top">
-        <span class="eyebrow">17–22 July · Six Days · 12 Spots</span>
-        <h3>A return to <em>stillness,</em> in Ubud.</h3>
-        <div class="price-display">
-          <div class="from">Starting from</div>
-          <div class="amount">€ —</div>
-          <span class="placeholder-note">[Final pricing to be confirmed]</span>
-        </div>
-        <div class="pricing-cta-row">
-          <a href="#" class="primary">Reserve with Stripe →</a>
-          <a href="https://wa.me/34931282688?text=Hi%2C%20I%27d%20love%20to%20reserve%20a%20spot%20on%20the%20Bali%20retreat." class="secondary" target="_blank" rel="noopener">Chat with Sabriyoga Experience Team</a>
-        </div>
-      </div>
-
       <div class="pricing-grid">
         <div class="pricing-block">
           <h4>
@@ -2481,9 +2740,10 @@
             Booking process
           </h4>
           <ul>
-            <li><strong>Reserve your spot</strong> with a 25% non-refundable deposit.</li>
+            <li><strong>Choose your room type</strong> from the accommodation section above.</li>
+            <li><strong>Reserve your spot</strong> with a 25% deposit via Stripe.</li>
             <li><strong>Receive confirmation</strong> and a welcome pack with all retreat details.</li>
-            <li><strong>Pay the remaining 75%</strong> up to 45 days before the trip start date.</li>
+            <li><strong>Pay the remaining balance</strong> up to 20 days before the trip start date.</li>
             <li><strong>Join a private group chat</strong> and pre-trip online sessions before departure.</li>
           </ul>
         </div>
@@ -2494,9 +2754,9 @@
             Payment methods
           </h4>
           <ul>
-            <li><strong>Stripe</strong> — secure card payment via direct link <em>(coming soon)</em></li>
-            <li><strong>Bank transfer</strong> — international wire details on request</li>
-            <li><strong>Digital payment</strong> — additional options available</li>
+            <li><strong>Stripe</strong> — secure card payment via direct link.</li>
+            <li><strong>Bank transfer</strong> — international wire details on request.</li>
+            <li><strong>Digital payment</strong> — additional options available.</li>
             <li><strong>Need an invoice?</strong> Just let us know when reserving.</li>
           </ul>
         </div>
@@ -2507,9 +2767,9 @@
             Key deadlines
           </h4>
           <ul>
-            <li><strong>Reservation:</strong> Deposit due to confirm your place.</li>
-            <li><strong>Final balance:</strong> Up to 45 days before departure.</li>
-            <li><strong>Minimum group:</strong> 8 participants — confirmed 20 days prior.</li>
+            <li><strong>Reservation:</strong> 25% deposit due to confirm your place.</li>
+            <li><strong>Final balance:</strong> Due 20 days before departure.</li>
+            <li><strong>Minimum group:</strong> 6 participants — confirmed 20 days prior.</li>
             <li><strong>Refunds:</strong> Processed within 30–60 working days when applicable.</li>
           </ul>
         </div>
@@ -2517,18 +2777,17 @@
         <div class="pricing-block">
           <h4>
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M12 9v3m0 4h.01M5 12a7 7 0 1 1 14 0 7 7 0 0 1-14 0z"/></svg>
-            Cancellation policy
+            Cancellation &amp; refund policy
           </h4>
-          <div class="cancel-table-mini">
-            <div class="cancel-row-mini"><span>45+ days before</span><span>30% fee · 70% refund</span></div>
-            <div class="cancel-row-mini"><span>30–44 days before</span><span>50% fee</span></div>
-            <div class="cancel-row-mini"><span>15–29 days before</span><span>75% fee</span></div>
-            <div class="cancel-row-mini"><span>0–14 days before</span><span>100% fee</span></div>
-          </div>
+          <ul class="policy-list">
+            <li><strong>Refunds.</strong> Processed within 30–60 working days, where applicable.</li>
+            <li><strong>Deposit refund (25%).</strong> A 25% deposit is required to confirm room availability. If the room is not available, the full deposit will be refunded.</li>
+            <li><strong>Trip cancellation.</strong> In the event that the trip is cancelled by Sabriyoga Experience due to not reaching the minimum group size of 6 participants, a 90% refund of the total amount paid will be issued. This applies if the cancellation is made up to 20 days prior to the departure date.</li>
+          </ul>
         </div>
       </div>
 
-      <p class="pricing-note">A 25% non-refundable deposit is required to secure your spot (refundable only if the trip is cancelled by the organizer). This trip requires a minimum of 8 participants — if not reached 20 days before departure, the trip will be cancelled and a 90% refund issued (10% retained for processing). In case of unforeseen weather or government restrictions, certain activities may be modified or replaced. Travel and health insurance are strongly recommended and are the responsibility of each participant.</p>
+      <p class="pricing-note">In case of unforeseen weather or government restrictions, certain activities may be modified or replaced. Travel and health insurance are strongly recommended and are the responsibility of each participant.</p>
     </div>
 
     <!-- ============ WAITLIST FORM ============ -->
@@ -2554,10 +2813,10 @@
 
 <!-- ============ FINAL CTA ============ -->
 <section class="final-cta" id="reserve">
-  <span class="eyebrow">17–22 July · Limited to 12 travelers</span>
+  <span class="dates-big">17–22 July 2026</span>
   <h2>Your seat at the <em>jungle's edge</em><br />is waiting.</h2>
   <p>Reserve your place with a 25% deposit. We'll be in touch within 24 hours to begin your journey to Ubud.</p>
-  <a href="#pricing" class="btn">Reserve Your Spot →</a>
+  <a href="#rooms" class="btn">Reserve Your Spot →</a>
   <div class="deposit-pill">● Stripe, Bank Transfer or Digital Payment</div>
 </section>
 
