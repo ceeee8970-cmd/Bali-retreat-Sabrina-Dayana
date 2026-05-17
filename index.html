@@ -1023,6 +1023,35 @@
     margin-top: 0.35rem;
     letter-spacing: 0.01em;
   }
+  .package-includes-note {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.45rem;
+    font-size: 0.78rem;
+    color: rgba(43, 42, 37, 0.7);
+    margin-top: 0.7rem;
+    padding: 0.55rem 0.7rem;
+    background: rgba(176, 138, 74, 0.08);
+    border-radius: 6px;
+    border-left: 2px solid var(--gold);
+    line-height: 1.45;
+  }
+  .package-includes-note svg {
+    flex-shrink: 0;
+    color: var(--gold);
+    margin-top: 0.1rem;
+  }
+  .package-includes-note strong {
+    color: var(--olive);
+    font-weight: 500;
+  }
+  .btn-arrow {
+    display: inline-block;
+    transition: transform 0.2s ease;
+  }
+  .btn-reserve:hover .btn-arrow {
+    transform: translateX(3px);
+  }
   .price-deadline-note {
     font-size: 0.7rem;
     color: rgba(43, 42, 37, 0.55);
@@ -1767,6 +1796,7 @@
     padding: 3rem;
     gap: 2.4rem;
   }
+  .pricing-block.full-width { grid-column: 1 / -1; }
   .pricing-block h4 {
     font-family: 'Fraunces', serif;
     font-weight: 400;
@@ -2073,7 +2103,7 @@
   <ul>
     <li><a href="#hero">Dayana Solano — Your Host</a></li>
     <li><a href="#about">Experience</a></li>
-    <li><a href="#rooms">Rooms</a></li>
+    <li><a href="#rooms">Rooms &amp; Pricing</a></li>
     <li><a href="#itinerary">Itinerary</a></li>
     <li><a href="#logistics">Flights</a></li>
     <li><a href="#sabrina">Group Leader</a></li>
@@ -2091,7 +2121,7 @@
   <ul>
     <li><a href="#hero" onclick="document.body.classList.remove('menu-open')">Dayana Solano — Your Host</a></li>
     <li><a href="#about" onclick="document.body.classList.remove('menu-open')">Experience</a></li>
-    <li><a href="#rooms" onclick="document.body.classList.remove('menu-open')">Rooms</a></li>
+    <li><a href="#rooms" onclick="document.body.classList.remove('menu-open')">Rooms &amp; Pricing</a></li>
     <li><a href="#itinerary" onclick="document.body.classList.remove('menu-open')">Itinerary</a></li>
     <li><a href="#logistics" onclick="document.body.classList.remove('menu-open')">Flights</a></li>
     <li><a href="#sabrina" onclick="document.body.classList.remove('menu-open')">Group Leader</a></li>
@@ -2338,16 +2368,20 @@
 
           <div class="room-price-block">
             <span class="early-bird-badge">Early Bird · until 22 May</span>
-            <div class="room-price-label">Total retreat package</div>
+            <div class="room-price-label">Total package · 5 nights all-inclusive</div>
             <div class="room-price-row">
               <span class="room-price">€1,480<span class="room-price-suffix">per person</span></span>
               <span class="price-regular">€1,750</span>
             </div>
             <div class="price-savings">Save €270 — reserve before 22 May</div>
+            <div class="package-includes-note">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 7L9 18l-5-5"/></svg>
+              <span>This price covers the <strong>full retreat experience</strong>: accommodation, daily yoga, all curated activities, meals as per program, and transfers.</span>
+            </div>
           </div>
 
           <div class="room-cta">
-            <a href="https://buy.stripe.com/aFa9ATdqz2V39eZ4HB5Ne01" target="_blank" rel="noopener" class="btn-reserve">Reserve this room</a>
+            <a href="https://buy.stripe.com/aFa9ATdqz2V39eZ4HB5Ne01" target="_blank" rel="noopener" class="btn-reserve">Reserve full retreat package <span class="btn-arrow">→</span></a>
             <a href="https://wa.me/34931282688?text=Hi%20Sabrina%2C%20I%27d%20like%20to%20book%20the%20Single%20Room%20for%20the%20Bali%20retreat" target="_blank" rel="noopener" class="btn-room-whatsapp">or chat on WhatsApp</a>
           </div>
         </div>
@@ -2393,16 +2427,20 @@
 
           <div class="room-price-block">
             <span class="early-bird-badge">Early Bird · until 22 May</span>
-            <div class="room-price-label">Total retreat package</div>
+            <div class="room-price-label">Total package · 5 nights all-inclusive</div>
             <div class="room-price-row">
               <span class="room-price">€1,080<span class="room-price-suffix">per person</span></span>
               <span class="price-regular">€1,350</span>
             </div>
             <div class="price-savings">Save €270 — reserve before 22 May</div>
+            <div class="package-includes-note">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 7L9 18l-5-5"/></svg>
+              <span>This price covers the <strong>full retreat experience</strong>: accommodation, daily yoga, all curated activities, meals as per program, and transfers.</span>
+            </div>
           </div>
 
           <div class="room-cta">
-            <a href="https://buy.stripe.com/00w6oH2LVeDLdvf4HB5Ne00" target="_blank" rel="noopener" class="btn-reserve">Reserve this room</a>
+            <a href="https://buy.stripe.com/00w6oH2LVeDLdvf4HB5Ne00" target="_blank" rel="noopener" class="btn-reserve">Reserve full retreat package <span class="btn-arrow">→</span></a>
             <a href="https://wa.me/34931282688?text=Hi%20Sabrina%2C%20I%27d%20like%20to%20book%20the%20Double%20Room%20for%20the%20Bali%20retreat" target="_blank" rel="noopener" class="btn-room-whatsapp">or chat on WhatsApp</a>
           </div>
         </div>
@@ -2814,7 +2852,7 @@
       </details>
       <details>
         <summary>Is travel insurance required?</summary>
-        <p>Yes, travel and health insurance are strongly recommended and are the responsibility of each participant.</p>
+        <p>We highly recommend purchasing travel and cancellation insurance to cover unexpected situations such as flight cancellations, health issues, personal emergencies, or travel disruptions. Insurance is the responsibility of each participant.</p>
       </details>
       <details>
         <summary>Can dietary needs be accommodated?</summary>
@@ -2905,7 +2943,7 @@
           </ul>
         </div>
 
-        <div class="pricing-block">
+        <div class="pricing-block full-width">
           <h4>
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M12 9v3m0 4h.01M5 12a7 7 0 1 1 14 0 7 7 0 0 1-14 0z"/></svg>
             Cancellation &amp; refund policy
@@ -2913,12 +2951,14 @@
           <ul class="policy-list">
             <li><strong>Refunds.</strong> Processed within 30–60 working days, where applicable.</li>
             <li><strong>Deposit refund (25%).</strong> A 25% deposit is required to confirm room availability. If the room is not available, the full deposit will be refunded.</li>
-            <li><strong>Trip cancellation.</strong> In the event that the trip is cancelled by Sabriyoga Experience due to not reaching the minimum group size of 6 participants, a 90% refund of the total amount paid will be issued. This applies if the cancellation is made up to 20 days prior to the departure date.</li>
+            <li><strong>Trip cancellation by Sabriyoga Experience.</strong> If the trip is cancelled by Sabriyoga Experience due to not reaching the minimum group size of 6 participants, a 90% refund of the total amount paid will be issued if the cancellation is made up to 20 days before departure.</li>
+            <li><strong>Cancellation by the participant.</strong> All payments are non-refundable. No refunds will be issued for cancellations made by the participant at any time before the trip.</li>
+            <li><strong>Travel insurance.</strong> We highly recommend purchasing travel and cancellation insurance to cover unexpected situations such as flight cancellations, health issues, personal emergencies, or travel disruptions.</li>
           </ul>
         </div>
       </div>
 
-      <p class="pricing-note">In case of unforeseen weather or government restrictions, certain activities may be modified or replaced. Travel and health insurance are strongly recommended and are the responsibility of each participant.</p>
+      <p class="pricing-note">In case of unforeseen weather or government restrictions, certain activities may be modified or replaced.</p>
     </div>
 
     <!-- ============ WAITLIST FORM ============ -->
@@ -2962,7 +3002,7 @@
       <h5>Explore</h5>
       <ul>
         <li><a href="#about">The Experience</a></li>
-        <li><a href="#rooms">Rooms</a></li>
+        <li><a href="#rooms">Rooms &amp; Pricing</a></li>
         <li><a href="#itinerary">Itinerary</a></li>
         <li><a href="#logistics">Flights &amp; Logistics</a></li>
         <li><a href="#sabrina">Group Leader</a></li>
