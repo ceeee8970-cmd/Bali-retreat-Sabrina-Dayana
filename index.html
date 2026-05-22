@@ -312,13 +312,25 @@
     padding: 9rem 3rem 4rem;
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 5rem;
-    align-items: center;
+    grid-template-areas:
+      "text-top   art"
+      "text-bottom art";
+    gap: 0 5rem;
+    align-items: start;
     position: relative;
     background:
       radial-gradient(ellipse at top right, rgba(138, 154, 123, 0.20), transparent 55%),
       radial-gradient(ellipse at bottom left, rgba(231, 220, 196, 0.55), transparent 60%),
       var(--ivory);
+  }
+  .hero-text-top { grid-area: text-top; position: relative; z-index: 2; padding-bottom: 1.5rem; }
+  .hero-text-bottom { grid-area: text-bottom; position: relative; z-index: 2; }
+  .hero-art { grid-area: art; align-self: center; }
+  /* Push the title and bio together visually on desktop (no big gap between top and bottom) */
+  @media (min-width: 981px) {
+    .hero { align-items: center; }
+    .hero-text-top { padding-bottom: 0; }
+    .hero-text-top .display { margin-bottom: 0; }
   }
   .hero::before {
     content: '';
@@ -330,9 +342,9 @@
     pointer-events: none;
     mask: linear-gradient(180deg, transparent, black 40%, black 60%, transparent);
   }
-  .hero-text { position: relative; z-index: 2; }
-  .hero-text .eyebrow { display: block; margin-bottom: 1.4rem; }
-  .hero-text .retreat-pill {
+  /* Removed - now on .hero-text-top and .hero-text-bottom */
+  [class*="hero-text"] .eyebrow { display: block; margin-bottom: 1.4rem; }
+  .hero-text-top .retreat-pill {
     display: inline-flex;
     align-items: center;
     gap: 0.7rem;
@@ -347,12 +359,12 @@
     letter-spacing: 0.02em;
     margin-bottom: 1.8rem;
   }
-  .hero-text .retreat-pill em {
+  .hero-text-top .retreat-pill em {
     font-style: italic;
     color: var(--moss);
     font-weight: 500;
   }
-  .hero-text .retreat-pill::before {
+  .hero-text-top .retreat-pill::before {
     content: '';
     width: 8px;
     height: 8px;
@@ -360,7 +372,7 @@
     border-radius: 50%;
   }
   @media (max-width: 880px) {
-    .hero-text .retreat-pill { font-size: 0.95rem; padding: 0.7rem 1.2rem; }
+    .hero-text-top .retreat-pill { font-size: 0.95rem; padding: 0.7rem 1.2rem; }
   }
   .hero h1 {
     font-size: clamp(2.6rem, 5.5vw, 4.6rem);
@@ -566,11 +578,21 @@
   }
 
   @media (max-width: 980px) {
-    .hero { grid-template-columns: 1fr; padding: 8rem 1.25rem 3rem; gap: 3rem; }
-    .hero-text { max-width: 100%; overflow-wrap: break-word; word-wrap: break-word; }
-    .hero-text .display { word-wrap: break-word; overflow-wrap: break-word; hyphens: auto; }
-    .hero-text .lead { padding-right: 0.25rem; }
-    .hero-art { height: auto; min-height: 540px; max-width: 480px; margin: 0 auto; width: 100%; aspect-ratio: 4/5; }
+    .hero {
+      grid-template-columns: 1fr;
+      grid-template-areas:
+        "text-top"
+        "art"
+        "text-bottom";
+      padding: 8rem 1.25rem 3rem;
+      gap: 2rem;
+    }
+    .hero-text-top { padding-bottom: 0; }
+    [class*="hero-text"] { max-width: 100%; overflow-wrap: break-word; word-wrap: break-word; }
+    [class*="hero-text"] .display { word-wrap: break-word; overflow-wrap: break-word; hyphens: auto; }
+    .hero-text-bottom .lead { padding-right: 0.25rem; }
+    .hero-text-bottom { margin-top: 0.5rem; }
+    .hero-art { height: auto; min-height: 540px; max-width: 480px; margin: 0 auto; width: 100%; aspect-ratio: 4/5; align-self: center; }
     .hero-photo-circle { width: 100px; height: 100px; top: 2%; }
     .hero-photo-square { width: 35%; bottom: 8%; }
     .hero-name-card { bottom: 0.5rem; right: 2%; padding: 0.8rem 1.1rem; min-width: 0; }
@@ -578,7 +600,7 @@
   }
   @media (max-width: 600px) {
     .hero { padding: 7rem 1.1rem 3rem; }
-    .hero-text .display { font-size: clamp(2rem, 9vw, 2.8rem); line-height: 1.08; }
+    [class*="hero-text"] .display { font-size: clamp(2rem, 9vw, 2.8rem); line-height: 1.08; }
   }
 
   /* ============ MARQUEE ============ */
@@ -2171,9 +2193,23 @@
 
 <!-- ============ HERO — DAYANA ============ -->
 <section class="hero" id="hero">
-  <div class="hero-text">
+  <div class="hero-text-top">
     <span class="retreat-pill">Bali · Ubud · <em>17–22 July 2026</em></span>
     <h1 class="display">Travel to Bali, awaken your essence with <em>Dayana Solano.</em></h1>
+  </div>
+
+  <div class="hero-art">
+    <div class="hero-portrait"></div>
+    <div class="hero-photo-circle"></div>
+    <div class="hero-photo-square"></div>
+    <div class="hero-name-card">
+      <div class="small">Your Host</div>
+      <div class="name">Dayana Solano</div>
+      <div class="followers">@dayanasolanob</div>
+    </div>
+  </div>
+
+  <div class="hero-text-bottom">
     <p class="lead">Dayana Solano is a yoga teacher, nutritionist, <strong>Ayurveda specialist</strong>, and <strong>wellness expert</strong> dedicated to helping people reconnect with their body, energy, and inner clarity.</p>
     <p class="lead">With over <strong>15 years of experience</strong> and more than <strong>1,500 hours of registered yoga teacher training</strong>, her approach blends ancient practices with a modern understanding of the body and nervous system. In addition to her yoga education, she has also trained in <strong>Ayurveda, sound healing, and holistic wellness modalities</strong>.</p>
     <p class="lead">She is the <strong>founder of DSB Trinity</strong>, a corporate wellness brand that brings wellness experiences into companies, luxury spaces, and international communities. Her international journey spans <strong>Europe, the Middle East, and luxury wellness environments</strong>, collaborating with renowned hotels, wellness brands, and exclusive experiences focused on balance, performance, and transformation.</p>
@@ -2206,17 +2242,6 @@
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><polygon points="5 3 19 12 5 21 5 3"/></svg>
         Try a free online class
       </a>
-    </div>
-  </div>
-
-  <div class="hero-art">
-    <div class="hero-portrait"></div>
-    <div class="hero-photo-circle"></div>
-    <div class="hero-photo-square"></div>
-    <div class="hero-name-card">
-      <div class="small">Your Host</div>
-      <div class="name">Dayana Solano</div>
-      <div class="followers">@dayanasolanob</div>
     </div>
   </div>
 </section>
